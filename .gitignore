@@ -1,0 +1,29 @@
+# Compiled output
+target/
+*.class
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+application-local.properties
+src/main/resources/firebase-service-account.json
+
+# Build files
+*.jar
+*.war
+*.ear
