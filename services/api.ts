@@ -27,6 +27,16 @@ export const setPassword = async (token: string, password: string) => {
     }
 };
 
+export const searchOperators = async (query: string) => {
+    try {
+        const response = await api.get(`/search?q=${encodeURIComponent(query)}`);
+        return response.data;
+    } catch (error: any) {
+        console.error('API Error:', error.response?.data || error.message);
+        throw error;
+    }
+};
+
 export const signIn = async (email: string, password: string) => {
     try {
         const response = await api.post('/auth/signin', { email, password });
