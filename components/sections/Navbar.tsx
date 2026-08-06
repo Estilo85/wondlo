@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -14,39 +15,47 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const navLinks = [
+        { name: 'Home', href: '/' },
+        { name: 'Community', href: '/community' },
+        { name: 'Sign In', href: '/signin' },
+        { name: 'Sign Up', href: '/signup' },
+    ];
+
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
             isScrolled ? 'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]' : 'bg-white'
         }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-                {/* Logo with Circular Image */}
-                <Link href="/" className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full overflow-hidden bg-[#8B6BCB] flex items-center justify-center">
-                        <img 
-                            src="/wondlo-logo.png" 
-                            alt="Wondlo" 
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-                    <span className="font-display font-semibold text-[22px] text-[#2F2F3A]">
-                        Wondlo
-                    </span>
+                {/* Logo */}
+                <Link href="/" className="font-display font-semibold text-[30px] text-[#2B2740]">
+                    Wondlo
                 </Link>
 
+                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-8">
-                    <Link href="/" className="text-sm text-[#6B7280] hover:text-[#8B6BCB] transition-colors">Home</Link>
-                    <Link href="/community" className="text-sm text-[#6B7280] hover:text-[#8B6BCB] transition-colors">Community</Link>
-                    <Link href="/signin" className="text-sm text-[#6B7280] hover:text-[#8B6BCB] transition-colors">Sign In</Link>
-                    <Link
-                        href="/signup"
-                        className="px-5 py-2.5 bg-[#8B6BCB] text-white font-semibold text-sm rounded-[14px] hover:bg-[#7A5BB8] transition-colors"
-                    >
-                        Sign Up
-                    </Link>
+                    {navLinks.map((link) => {
+                        const isActive = pathname === link.href;
+                        return (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className={`relative text-sm font-medium transition-colors ${
+                                    isActive ? 'text-[#8B6BCB]' : 'text-[#6B7280] hover:text-[#8B6BCB]'
+                                }`}
+                            >
+                                {link.name}
+                                {isActive && (
+                                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#8B6BCB]"></span>
+                                )}
+                            </Link>
+                        );
+                    })}
                 </div>
 
+                {/* Mobile Hamburger */}
                 <button
-                    className="md:hidden text-[#2F2F3A]"
+                    className="md:hidden text-[#2B2740]"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,14 +64,21 @@ export default function Navbar() {
                 </button>
             </div>
 
+            {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="md:hidden bg-white border-t border-[#E8E5F3] p-4 flex flex-col gap-4">
-                    <Link href="/" className="text-sm text-[#2F2F3A] hover:text-[#8B6BCB] transition-colors">Home</Link>
-                    <Link href="/community" className="text-sm text-[#2F2F3A] hover:text-[#8B6BCB] transition-colors">Community</Link>
-                    <Link href="/signin" className="text-sm text-[#2F2F3A] hover:text-[#8B6BCB] transition-colors">Sign In</Link>
-                    <Link href="/signup" className="px-5 py-2.5 bg-[#8B6BCB] text-white font-semibold text-sm rounded-[14px] hover:bg-[#7A5BB8] transition-colors text-center">
-                        Sign Up
-                    </Link>
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className={`text-sm font-medium ${
+                                pathname === link.href ? 'text-[#8B6BCB]' : 'text-[#6B7280]'
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
                 </div>
             )}
         </nav>

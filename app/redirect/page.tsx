@@ -23,7 +23,7 @@ export default function RedirectPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h1 className="font-display font-bold text-3xl text-[#2B2740]">You're in!</h1>
+                    <h1 className="font-display font-bold text-3xl text-[#2F2F3A]">You're in!</h1>
                     <p className="text-[#6B7280] text-sm mt-2">Thanks for joining.</p>
                     <p className="text-[#6B7280] text-sm mt-2">You're being redirected to our Telegram Community...</p>
                     <div className="flex justify-center mt-6"><div className="spinner"></div></div>

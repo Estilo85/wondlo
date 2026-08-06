@@ -1,6 +1,7 @@
 import Navbar from '@/components/sections/Navbar';
 import Hero from '@/components/sections/Hero';
 import Stats from '@/components/sections/Stats';
+import AdventurePlanning from '@/components/sections/AdventurePlanning';
 import HowItWorks from '@/components/sections/HowItWorks';
 import WhatYouReceive from '@/components/sections/WhatYouReceive';
 import Testimonials from '@/components/sections/Testimonials';
@@ -12,6 +13,7 @@ export default function Home() {
             <Navbar />
             <Hero />
             <Stats />
+            <AdventurePlanning />
             <HowItWorks />
             <WhatYouReceive />
             <Testimonials />

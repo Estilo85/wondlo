@@ -14,7 +14,7 @@ export default function WaitingListPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#F6F4FE] flex flex-col">
+        <div className="min-h-screen bg-[#FAF8FF] flex flex-col">
             <Navbar />
             <div className="flex-1 flex items-center justify-center px-4 py-10">
                 <div className="w-full max-w-[480px] bg-white rounded-[22px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-[#E8E5F3] p-12 text-center">
@@ -24,7 +24,7 @@ export default function WaitingListPage() {
                         </svg>
                     </div>
 
-                    <h1 className="font-bold text-3xl text-[#2B2740]">You're in!</h1>
+                    <h1 className="font-bold text-3xl text-[#2F2F3A]">You're in!</h1>
 
                     <p className="text-[#6B7280] text-sm mt-2">Thanks for joining.</p>
                     <p className="text-[#6B7280] text-sm mt-2">

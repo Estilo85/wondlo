@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#C7B5F5] py-8 mt-auto">
+        <footer className="bg-[#C7B5F5] text-[#2B2740] py-12 mt-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-[#2B2740]/10">
                     {/* Column 1: Wondlo & Address */}
                     <div>
-                        <h3 className="font-display font-semibold text-lg mb-2 text-[#2B2740]">Wondlo</h3>
+                        <h3 className="font-display font-semibold text-xl text-[#2B2740] mb-2">Wondlo</h3>
                         <p className="text-[#2B2740]/70 text-sm leading-relaxed">
                             71-75 Shelton Street
                             <br />
@@ -32,8 +32,8 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom Center - matches Refer button style */}
-                <div className="mt-8 pt-6 border-t border-[#2B2740]/10 text-center text-[#2B2740]/60 text-xs">
+                {/* Bottom */}
+                <div className="pt-8 text-center text-[#2B2740]/60 text-sm">
                     <p>Safety as a System™</p>
                     <p className="mt-1">Copyright © wondlo 2026</p>
                 </div>

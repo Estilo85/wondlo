@@ -38,7 +38,6 @@ export default function SignUpPage() {
 
         try {
             const response = await joinWaitingList(name, email);
-            console.log('Signup response:', response);
             
             if (response.success) {
                 setSuccess(true);
@@ -53,27 +52,29 @@ export default function SignUpPage() {
             }
         } catch (err: any) {
             console.error('Signup error:', err);
-            const errorMessage = err.response?.data?.message || err.message || 'Something went wrong. Please try again.';
-            setError(errorMessage);
+            setError(err.response?.data?.message || err.message || 'Something went wrong. Please try again.');
             setLoading(false);
         }
     };
 
     const handleRefer = () => {
         const link = window.location.origin + '/signup';
-        navigator.clipboard.writeText(link).then(() => {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 3000);
-        }).catch(() => {
-            const textArea = document.createElement('textarea');
-            textArea.value = link;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 3000);
-        });
+        navigator.clipboard.writeText(link)
+            .then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 3000);
+            })
+            .catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = link;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 3000);
+            });
     };
 
     return (

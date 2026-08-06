@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { signIn } from '@/services/api';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
-import { FaUserFriends } from 'react-icons/fa';
+import { FaUserFriends, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function SignInPage() {
     const [email, setEmail] = useState('');
@@ -38,7 +38,6 @@ export default function SignInPage() {
 
         try {
             const response = await signIn(email, password);
-            console.log('Signin response:', response);
             
             if (response.success) {
                 setSuccess(true);
@@ -52,27 +51,28 @@ export default function SignInPage() {
             }
         } catch (err: any) {
             console.error('Signin error:', err);
-            const errorMessage = err.response?.data?.message || err.message || 'Invalid email or password. Please try again.';
-            setError(errorMessage);
+            setError(err.response?.data?.message || err.message || 'Invalid email or password. Please try again.');
             setLoading(false);
         }
     };
 
     const handleRefer = () => {
         const link = window.location.origin + '/signup';
-        navigator.clipboard.writeText(link).then(() => {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 3000);
-        }).catch(() => {
-            const textArea = document.createElement('textarea');
-            textArea.value = link;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 3000);
-        });
+        navigator.clipboard.writeText(link)
+            .then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 3000);
+            })
+            .catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = link;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 3000);
+            });
     };
 
     return (
@@ -126,9 +126,9 @@ export default function SignInPage() {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#2F2F3A] transition-colors text-sm"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] hover:text-[#2F2F3A] transition-colors"
                                 >
-                                    {showPassword ? 'Hide' : 'Show'}
+                                    {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
                                 </button>
                             </div>
                         </div>
