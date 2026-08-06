@@ -3,24 +3,28 @@
 @tailwind utilities;
 
 :root {
-    /* Brand Colors from Guidelines */
-    --primary: #C7B5F5;
-    --primary-light: #EDE7FB;
-    --primary-mist: #F6F4FE;
-    --primary-dark: #7E6BB3;
-    --deep-plum: #2B2740;
-    --background: #F6F4FE;
-    --surface: #FFFFFF;
+    --bg-base: #F6F4FE;
+    --bg-surface: #F6F4FE;
     --text-primary: #2B2740;
-    --text-secondary: #6B7280;
-    --border: #E5E7EB;
-    --success: #22C55E;
-    --warning: #FBBF24;
+    --text-secondary: #7E6BB3;
+    --accent-primary: #F6F4FE;
+    --border-default: #7E6BB3;
+    --state-error: #C51D14;
+    --error-background: #FFF1E8;
+    --state-success: #22C55E;
+    --icon-colors: #7E6BB3;
+    --deep-plum: #2B2740;
+    --surface: #FFFFFF;
+    --button: #8B6BCB;
+    --accent-purple: #8B6BCB;
+    --muted-text: #6B7280;
+    --hero-gradient-start: #ffffff;
+    --hero-gradient-end: rgba(255,255,255,0.0);
 }
 
 @layer base {
     body {
-        @apply bg-[#F6F4FE] text-[#2B2740] font-sans antialiased;
+        @apply bg-[var(--bg-base)] text-[var(--text-primary)] font-sans antialiased;
     }
     h1, h2, h3, h4, h5, h6 {
         @apply font-display text-[#2B2740];
@@ -37,7 +41,7 @@
     }
 
     .btn-secondary {
-        @apply inline-flex items-center justify-center px-6 py-3 border-2 border-[#C7B5F5] text-[#C7B5F5] font-display font-semibold text-sm rounded-lg hover:bg-[#C7B5F5] hover:text-[#2B2740] hover:-translate-y-0.5 transition-all duration-200;
+        @apply inline-flex items-center justify-center px-6 py-3 border-2 border-[var(--border-default)] text-[var(--border-default)] font-display font-semibold text-sm rounded-lg hover:bg-[var(--border-default)] hover:text-[var(--text-primary)] hover:-translate-y-0.5 transition-all duration-200;
     }
 
     .card {
@@ -54,6 +58,10 @@
 
     .section-subtitle {
         @apply text-[#6B7280] text-center mb-12;
+    }
+    .section-padding {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 }
 
@@ -99,4 +107,27 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+/* Design-specific helpers */
+.hero-title {
+    font-family: var(--font-poppins);
+    font-weight: 700;
+    font-size: 2.8rem;
+    letter-spacing: -0.035em;
+}
+
+.hero-subtitle {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    color: var(--muted-text);
+    letter-spacing: -0.01em;
+}
+
+.skeleton-blob {
+    background: linear-gradient(90deg, #E9E7EE 0%, #F4F3F6 50%, #EDEAF2 100%);
+    border-radius: 9999px;
+}
+.hero-subtitle {
+    color: var(--muted-text);
 }

@@ -19,15 +19,15 @@ export default function WhatYouReceive() {
     ];
 
     return (
-        <section className="bg-[#D8C8F1]/20 py-20">
+        <section className="bg-[#F6F4FE] py-16">
             <div className="container">
-                <h2 className="font-display font-semibold text-3xl md:text-4xl text-[#2F2F3A] text-center mb-10">
+                <h2 className="font-display font-semibold text-3xl md:text-4xl text-[#2F2F3A] text-center mb-8">
                     What you'll receive
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {items.map((item, index) => (
-                        <div key={index} className="bg-white p-6 rounded-xl border border-[#E5E7EB] shadow-sm">
+                        <div key={index} className="bg-white p-6 rounded-xl border border-[#EDE8F8] shadow-sm">
                             <h3 className="font-display font-semibold text-lg text-[#2F2F3A] mb-2">
                                 {item.title}
                             </h3>

@@ -8,7 +8,7 @@ import Footer from '@/components/sections/Footer';
 
 export default function Home() {
     return (
-        <>
+        <main className="bg-[#F6F4FE] text-[#2B2740]">
             <Navbar />
             <Hero />
             <Stats />
@@ -16,6 +16,6 @@ export default function Home() {
             <WhatYouReceive />
             <Testimonials />
             <Footer />
-        </>
+        </main>
     );
 }

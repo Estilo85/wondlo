@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { setPassword } from '@/services/api';
 import Navbar from '@/components/sections/Navbar';
@@ -13,15 +13,19 @@ export default function SetPasswordPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [token, setToken] = useState<string | null>(null);
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const token = searchParams.get('token');
 
     useEffect(() => {
         if (!token) {
             setError('Invalid or missing verification token.');
         }
     }, [token]);
+
+    useEffect(() => {
+        const urlToken = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('token') : null;
+        setToken(urlToken);
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -40,8 +44,14 @@ export default function SetPasswordPage() {
             return;
         }
 
+        if (!token) {
+            setError('Invalid or missing token. Please use the link from your email.');
+            setLoading(false);
+            return;
+        }
+
         try {
-            const response = await setPassword(token!, password);
+            const response = await setPassword(token, password);
             console.log('Set password response:', response);
             
             if (response.success) {
