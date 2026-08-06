@@ -41,12 +41,23 @@ export default function SetPasswordPage() {
         }
 
         try {
-            await setPassword(token!, password);
-            setSuccess(true);
-            setLoading(false);
-            setTimeout(() => router.push('/signin'), 2000);
+            const response = await setPassword(token!, password);
+            console.log('Set password response:', response);
+            
+            if (response.success) {
+                setSuccess(true);
+                setLoading(false);
+                setTimeout(() => {
+                    router.push('/signin');
+                }, 2000);
+            } else {
+                setError(response.message || 'Something went wrong.');
+                setLoading(false);
+            }
         } catch (err: any) {
-            setError(err.response?.data?.message || 'Something went wrong. Please try again.');
+            console.error('Set password error:', err);
+            const errorMessage = err.response?.data?.message || err.message || 'Something went wrong. Please try again.';
+            setError(errorMessage);
             setLoading(false);
         }
     };

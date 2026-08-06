@@ -7,7 +7,6 @@ const api = axios.create({
     headers: { 'Content-Type': 'application/json' },
 });
 
-// Join waiting list
 export const joinWaitingList = async (name: string, email: string) => {
     try {
         const response = await api.post('/auth/waiting-list', { name, email });
@@ -17,7 +16,7 @@ export const joinWaitingList = async (name: string, email: string) => {
         throw error;
     }
 };
-// Set password after email verification
+
 export const setPassword = async (token: string, password: string) => {
     try {
         const response = await api.post('/auth/set-password', { token, password });
@@ -27,7 +26,17 @@ export const setPassword = async (token: string, password: string) => {
         throw error;
     }
 };
-// Get testimonials
+
+export const signIn = async (email: string, password: string) => {
+    try {
+        const response = await api.post('/auth/signin', { email, password });
+        return response.data;
+    } catch (error: any) {
+        console.error('API Error:', error.response?.data || error.message);
+        throw error;
+    }
+};
+
 export const getTestimonials = async () => {
     try {
         const response = await api.get('/testimonials');

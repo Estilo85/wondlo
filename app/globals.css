@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+    /* Brand Colors from Guidelines */
     --primary: #C7B5F5;
     --primary-light: #EDE7FB;
     --primary-mist: #F6F4FE;
@@ -35,7 +36,7 @@
         @apply inline-flex items-center justify-center px-6 py-3 bg-[#C7B5F5] text-[#2B2740] font-display font-semibold text-sm rounded-lg hover:bg-[#7E6BB3] hover:text-white hover:-translate-y-0.5 transition-all duration-200;
     }
 
-    .btn-outline {
+    .btn-secondary {
         @apply inline-flex items-center justify-center px-6 py-3 border-2 border-[#C7B5F5] text-[#C7B5F5] font-display font-semibold text-sm rounded-lg hover:bg-[#C7B5F5] hover:text-[#2B2740] hover:-translate-y-0.5 transition-all duration-200;
     }
 
@@ -93,7 +94,7 @@
 }
 
 .footer-gradient {
-    background: #1A1628;
+    background: #2B2740;
 }
 
 html {
