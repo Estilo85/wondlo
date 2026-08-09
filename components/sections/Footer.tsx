@@ -41,7 +41,7 @@ export default function Footer() {
 
                 <div className="pt-8 text-center text-white/50 text-sm">
                     <p>Safety as a System®</p>
-                    <p className="mt-1">Copyright © 2023 Wondlo</p>
+                    <p className="mt-1">Copyright © 2026 Wondlo</p>
                 </div>
             </div>
         </footer>
