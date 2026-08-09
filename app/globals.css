@@ -3,23 +3,20 @@
 @tailwind utilities;
 
 :root {
-    --primary: #C7B5F5;
-    --primary-light: #EDE7FB;
-    --primary-mist: #F6F4FE;
-    --primary-dark: #7E6BB3;
+    --lilac-purple: #C7B5F5;
+    --soft-lavender: #EDE7FB;
+    --lilac-mist: #F6F4FE;
+    --dusty-purple: #7E6BB3;
     --deep-plum: #2B2740;
-    --background: #F6F4FE;
-    --surface: #FFFFFF;
-    --text-primary: #2B2740;
     --text-secondary: #6B7280;
     --border: #E8E5F3;
-    --success: #22C55E;
-    --warning: #FBBF24;
+    --red: #DC2626;
+    --green: #22C55E;
 }
 
 @layer base {
     body {
-        @apply bg-[#F6F4FE] text-[#2B2740] font-sans antialiased;
+        @apply bg-white text-[#2B2740] font-sans antialiased;
     }
     h1, h2, h3, h4, h5, h6 {
         @apply font-display text-[#2B2740];
@@ -32,29 +29,12 @@
     }
 
     .btn-primary {
-        @apply inline-flex items-center justify-center px-6 py-3 bg-[#C7B5F5] text-[#2B2740] font-display font-semibold text-sm rounded-lg hover:bg-[#7E6BB3] hover:text-white hover:-translate-y-0.5 transition-all duration-200;
+        @apply inline-flex items-center justify-center px-6 py-3 bg-[#7E6BB3] text-white font-display font-semibold text-sm rounded-xl hover:bg-[#6A5A9E] hover:-translate-y-0.5 transition-all duration-200;
     }
 
     .badge-purple {
         @apply inline-block px-4 py-1.5 bg-[#EDE7FB] text-[#7E6BB3] font-display font-medium text-sm rounded-full;
     }
-
-    .section-title {
-        @apply font-display font-semibold text-3xl md:text-4xl text-[#2B2740] text-center mb-3;
-    }
-
-    .card {
-        @apply bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-[#E8E5F3] hover:-translate-y-1 transition-all duration-300;
-    }
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.spinner {
-    @apply w-10 h-10 border-4 border-[#EDE7FB] border-t-[#C7B5F5] rounded-full;
-    animation: spin 0.8s linear infinite;
 }
 
 html {
