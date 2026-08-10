@@ -2,56 +2,72 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
 
 export default function Navbar() {
     const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 20);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const navLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'Community', href: '/community' },
-        { name: 'Sign In', href: '/signin' },
-        { name: 'Sign Up', href: '/signup' },
+        { name: 'HOME', href: '/' },
+        { name: 'COMMUNITY', href: '/community' },
     ];
 
+    // Check if on auth pages (Sign In / Sign Up)
+    const isAuthPage = pathname === '/signin' || pathname === '/signup';
+
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
-            isScrolled ? 'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]' : 'bg-white'
-        }`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-                <Link href="/" className="font-display font-semibold text-[30px] text-[#2B2740]">
+        <nav className="h-[55px] bg-[#F9F7FF] flex items-center">
+            <div className="max-w-7xl mx-auto px-8 w-full flex items-center justify-between">
+                {/* Logo */}
+                <Link 
+                    href="/" 
+                    className="font-display font-semibold text-[18px] text-[#2B2740] tracking-[-0.5px]"
+                >
                     Wondlo
                 </Link>
 
-                <div className="hidden md:flex items-center gap-8">
+                {/* Right Navigation */}
+                <div className="flex items-center gap-6">
                     {navLinks.map((link) => {
-                        const isActive = pathname === link.href;
+                        const isActive = pathname === link.href && !isAuthPage;
                         return (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className={`text-sm font-medium transition-colors ${
-                                    isActive ? 'text-[#C7B5F5]' : 'text-[#6B7280] hover:text-[#C7B5F5]'
+                                className={`text-[11px] font-medium uppercase tracking-[0.5px] transition-colors px-3 py-1.5 rounded-md ${
+                                    isActive 
+                                        ? 'bg-[#7E6BB3] text-white' 
+                                        : 'text-[#2B2740]/70 hover:text-[#2B2740] hover:bg-[#EDE7FB]'
                                 }`}
                             >
                                 {link.name}
                             </Link>
                         );
                     })}
-                </div>
 
-                <button className="md:hidden text-[#2B2740]">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
+                    {/* Sign In Button */}
+                    <Link
+                        href="/signin"
+                        className={`px-4 py-1.5 font-display font-semibold text-[11px] rounded-md transition-colors ${
+                            pathname === '/signin'
+                                ? 'bg-[#7E6BB3] text-white'
+                                : 'bg-white border border-[#DDD7EA] text-[#2B2740] hover:bg-[#EDE7FB]'
+                        }`}
+                    >
+                        Sign In
+                    </Link>
+
+                    {/* Sign Up Button */}
+                    <Link
+                        href="/signup"
+                        className={`px-4 py-1.5 font-display font-semibold text-[11px] rounded-md transition-colors ${
+                            pathname === '/signup'
+                                ? 'bg-[#7E6BB3] text-white'
+                                : 'bg-white border border-[#DDD7EA] text-[#2B2740] hover:bg-[#EDE7FB]'
+                        }`}
+                    >
+                        Sign Up
+                    </Link>
+                </div>
             </div>
         </nav>
     );
