@@ -3,20 +3,37 @@
 @tailwind utilities;
 
 :root {
-    --lilac-purple: #C7B5F5;
+    /* Primary Colors */
+    --primary: #7E6BB3;
+    --lilac-purple: #9B88C7;
     --soft-lavender: #EDE7FB;
-    --lilac-mist: #F6F4FE;
-    --dusty-purple: #7E6BB3;
+    --lilac-mist: #F9F7FF;
+    --white: #FFFFFF;
     --deep-plum: #2B2740;
-    --text-secondary: #6B7280;
-    --border: #E8E5F3;
-    --red: #DC2626;
-    --green: #22C55E;
+    --text-secondary: #6F6A7F;
+    
+    /* Adventure Planning Colors */
+    --peach-bg: #FFF5F0;
+    --peach-text: #C77D72;
+    --lavender-bg: #EEE8FA;
+    --lavender-text: #6F6096;
+    --vs-bg: #DCCAF8;
+    --vs-text: #765FB1;
+    
+    /* Route Line */
+    --route-color: #C9B65A;
+    
+    /* Footer */
+    --footer-bg: #9B88C7;
+    
+    /* Borders */
+    --border-light: #DDD7EA;
+    --shadow-light: rgba(47, 39, 64, 0.08);
 }
 
 @layer base {
     body {
-        @apply bg-white text-[#2B2740] font-sans antialiased;
+        @apply bg-[#F9F7FF] text-[#2B2740] font-sans antialiased;
     }
     h1, h2, h3, h4, h5, h6 {
         @apply font-display text-[#2B2740];
@@ -29,11 +46,11 @@
     }
 
     .btn-primary {
-        @apply inline-flex items-center justify-center px-6 py-3 bg-[#7E6BB3] text-white font-display font-semibold text-sm rounded-xl hover:bg-[#6A5A9E] hover:-translate-y-0.5 transition-all duration-200;
+        @apply inline-flex items-center justify-center px-6 py-3 bg-[#7E6BB3] text-white font-display font-semibold text-sm rounded-lg hover:bg-[#6A5A9E] hover:-translate-y-0.5 transition-all duration-200;
     }
 
-    .badge-purple {
-        @apply inline-block px-4 py-1.5 bg-[#EDE7FB] text-[#7E6BB3] font-display font-medium text-sm rounded-full;
+    .card {
+        @apply bg-white border border-[#DDD7EA] rounded-lg shadow-[0_2px_5px_rgba(47,39,64,0.08)];
     }
 }
 
