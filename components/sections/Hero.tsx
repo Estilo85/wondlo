@@ -21,15 +21,21 @@ export default function Hero() {
      * =============================================================
      * SAFETY CARD DEMO DATA
      *
-     * The card starts with the original 85 score.
-     * It then changes every 60 seconds.
+     * Card sequence:
+     *
+     * 0: 85 / 100
+     * 1: 75 / 100
+     * 2: 25 / 100
+     * 3: 50 / 100
+     *
+     * Each card is displayed for 60 seconds.
      * =============================================================
      */
     const safetyCards: SafetyCardData[] = [
         {
             score: 85,
             status: 'Good',
-            provider: 'Summit Trails Expeditions',
+            provider: 'Example Provider',
             details: [
                 {
                     label: 'Incident History',
@@ -44,7 +50,7 @@ export default function Hero() {
                     value: 'Registered & Licensed',
                 },
             ],
-            isExample: false,
+            isExample: true,
         },
 
         {
@@ -121,11 +127,10 @@ export default function Hero() {
      */
     useEffect(() => {
         const interval = setInterval(() => {
-            /*
-             * Fade the existing card out before replacing it.
-             */
+            // Fade the current card out first.
             setIsCardVisible(false);
 
+            // Change the card after the fade-out.
             setTimeout(() => {
                 setActiveCardIndex((currentIndex) => {
                     return (currentIndex + 1) % safetyCards.length;
@@ -188,6 +193,7 @@ export default function Hero() {
                                 color: '#806DB6',
                             }}
                         >
+                            {/* Shield + checkmark */}
                             <svg
                                 className="h-[18px] w-[18px] flex-shrink-0"
                                 viewBox="0 0 24 24"
@@ -223,7 +229,7 @@ export default function Hero() {
                             style={{
                                 fontFamily: 'Poppins, sans-serif',
                                 fontSize: '70px',
-                                fontWeight: 800,
+                                fontWeight: 780,
                                 lineHeight: '1.03',
                                 letterSpacing: '-2.8px',
                             }}
@@ -264,7 +270,9 @@ export default function Hero() {
                             ================================================== */}
                             <div className="flex min-h-[64px] w-full items-center rounded-[8px] border border-[#DDD8E8] bg-white p-[4px] shadow-[0_2px_8px_rgba(43,39,64,0.04)]">
 
+                                {/* Search icon */}
                                 <div className="flex h-full flex-shrink-0 items-center pl-4">
+
                                     <svg
                                         className="h-[23px] w-[23px] text-[#8F8998]"
                                         viewBox="0 0 24 24"
@@ -285,9 +293,12 @@ export default function Hero() {
                                             strokeLinecap="round"
                                         />
                                     </svg>
+
                                 </div>
 
+                                {/* Input */}
                                 <div className="min-w-0 flex-1">
+
                                     <input
                                         type="text"
                                         placeholder="Search by company name, website, or social media handle"
@@ -299,8 +310,10 @@ export default function Hero() {
                                             lineHeight: 1,
                                         }}
                                     />
+
                                 </div>
 
+                                {/* Analyse button */}
                                 <button
                                     onClick={handleAnalyzeClick}
                                     className="flex h-[54px] flex-shrink-0 items-center justify-center gap-2 rounded-[6px] bg-[#806DB6] px-6 text-white transition-all hover:-translate-y-[1px] hover:bg-[#705DA5]"
@@ -336,6 +349,7 @@ export default function Hero() {
                                         />
                                     </svg>
                                 </button>
+
                             </div>
 
                             {/* =================================================
@@ -355,6 +369,12 @@ export default function Hero() {
                                     Adventure type:
                                 </div>
 
+                                {/* =================================================
+                                    CHIPS
+
+                                    24px horizontal gap BETWEEN chips.
+                                    24px horizontal padding INSIDE each chip.
+                                ================================================== */}
                                 <div
                                     className="flex w-full flex-wrap items-center"
                                     style={{
@@ -382,6 +402,7 @@ export default function Hero() {
                                         </span>
                                     ))}
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -434,6 +455,7 @@ export default function Hero() {
                                     />
                                 </div>
 
+                                {/* Image overlay */}
                                 <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-black/[0.025] via-transparent to-black/[0.05]" />
 
                                 <div className="pointer-events-none absolute inset-0 z-20 rounded-[7px] ring-1 ring-inset ring-black/[0.05]" />
@@ -443,9 +465,6 @@ export default function Hero() {
 
                         {/* =================================================
                             DYNAMIC SAFETY CARD
-
-                            The card fades out, changes data, then fades
-                            back in every 60 seconds.
                         ================================================== */}
                         <div
                             className={`absolute right-[4%] top-[265px] z-30 w-[320px] rounded-[10px] border border-[#DDD6EA] bg-white p-[17px] shadow-[0_18px_45px_rgba(43,39,64,0.16)] transition-all duration-350 ${
@@ -496,9 +515,10 @@ export default function Hero() {
                                     >
                                         Safety Card
                                     </span>
+
                                 </div>
 
-                                {/* Example badge only appears on demo cards */}
+                                {/* Example badge */}
                                 {activeCard.isExample && (
                                     <span
                                         className="rounded-full bg-[#F1EDF8] px-2 py-1 text-[#806DB6]"
@@ -582,37 +602,21 @@ export default function Hero() {
                                 ================================================== */}
                                 <div className="mt-3">
 
-                                    {activeCard.isExample ? (
-                                        <span
-                                            className="inline-flex rounded-full border border-[#D9D0E8] bg-white/70 px-3 py-1.5 text-[#625C70]"
-                                            style={{
-                                                fontFamily: 'Poppins, sans-serif',
-                                                fontSize: '14px',
-                                                fontWeight: 600,
-                                                lineHeight: 1.2,
-                                            }}
-                                        >
-                                            {activeCard.provider}
-                                        </span>
-                                    ) : (
-                                        <p
-                                            className="text-[#29243F]"
-                                            style={{
-                                                fontFamily: 'Poppins, sans-serif',
-                                                fontSize: '14px',
-                                                fontWeight: 600,
-                                                lineHeight: 1.3,
-                                            }}
-                                        >
-                                            {activeCard.provider}
-                                        </p>
-                                    )}
+                                    <span
+                                        className="inline-flex rounded-full border border-[#D9D0E8] bg-white/70 px-3 py-1.5 text-[#625C70]"
+                                        style={{
+                                            fontFamily: 'Poppins, sans-serif',
+                                            fontSize: '14px',
+                                            fontWeight: 600,
+                                            lineHeight: 1.2,
+                                        }}
+                                    >
+                                        {activeCard.provider}
+                                    </span>
 
                                 </div>
 
-                                {/* =================================================
-                                    SCORE PROGRESS
-                                ================================================== */}
+                                {/* Score progress */}
                                 <div className="mt-3 h-[7px] overflow-hidden rounded-full bg-[#D3CEDA]">
                                     <div
                                         className="h-full rounded-full bg-[#806DB6] transition-all duration-500"
@@ -654,6 +658,7 @@ export default function Hero() {
                 ====================================================== */}
                 <div className="relative mt-10 block h-[430px] lg:hidden">
 
+                    {/* Paragliding */}
                     <div className="absolute left-0 top-0 h-[250px] w-[52%] overflow-hidden rounded-[7px]">
                         <img
                             src="/images/paragliding.jpg"
@@ -662,6 +667,7 @@ export default function Hero() {
                         />
                     </div>
 
+                    {/* Hiking */}
                     <div className="absolute right-0 top-0 h-[220px] w-[52%] overflow-hidden rounded-[7px]">
                         <img
                             src="/images/hiking.jpg"
@@ -670,6 +676,7 @@ export default function Hero() {
                         />
                     </div>
 
+                    {/* Snowboarding */}
                     <div className="absolute bottom-0 left-0 h-[180px] w-[34%] overflow-hidden rounded-[7px]">
                         <img
                             src="/images/snowboarding.jpg"
@@ -678,6 +685,7 @@ export default function Hero() {
                         />
                     </div>
 
+                    {/* Kayaking */}
                     <div className="absolute bottom-0 left-[29%] h-[180px] w-[34%] overflow-hidden rounded-[7px] border-[4px] border-[#F7F5FD]">
                         <img
                             src="/images/kayaking.jpg"
@@ -697,10 +705,12 @@ export default function Hero() {
                         }`}
                     >
 
+                        {/* Mobile card header */}
                         <div className="mb-2 flex items-center justify-between">
 
                             <div className="flex items-center gap-2">
 
+                                {/* Shield + checkmark */}
                                 <svg
                                     className="h-5 w-5 text-[#806DB6]"
                                     viewBox="0 0 24 24"
@@ -752,6 +762,7 @@ export default function Hero() {
 
                         </div>
 
+                        {/* Mobile score */}
                         <div className="rounded-[8px] bg-[#ECE5FB] px-3 py-2.5">
 
                             <p
@@ -807,37 +818,26 @@ export default function Hero() {
 
                             </div>
 
+                            {/* Mobile provider */}
                             <div className="mt-2">
 
-                                {activeCard.isExample ? (
-                                    <span
-                                        className="inline-flex rounded-full border border-[#D9D0E8] bg-white/70 px-2.5 py-1 text-[#625C70]"
-                                        style={{
-                                            fontFamily: 'Poppins, sans-serif',
-                                            fontSize: '13px',
-                                            fontWeight: 600,
-                                        }}
-                                    >
-                                        {activeCard.provider}
-                                    </span>
-                                ) : (
-                                    <p
-                                        className="text-[#29243F]"
-                                        style={{
-                                            fontFamily: 'Poppins, sans-serif',
-                                            fontSize: '14px',
-                                            fontWeight: 600,
-                                        }}
-                                    >
-                                        {activeCard.provider}
-                                    </p>
-                                )}
+                                <span
+                                    className="inline-flex rounded-full border border-[#D9D0E8] bg-white/70 px-2.5 py-1 text-[#625C70]"
+                                    style={{
+                                        fontFamily: 'Poppins, sans-serif',
+                                        fontSize: '13px',
+                                        fontWeight: 600,
+                                    }}
+                                >
+                                    {activeCard.provider}
+                                </span>
 
                             </div>
 
+                            {/* Mobile progress */}
                             <div className="mt-2 h-[6px] overflow-hidden rounded-full bg-[#D3CEDA]">
                                 <div
-                                    className="h-full rounded-full bg-[#806DB6] transition-all duration-500"
+                                    className="h-full rounded-full bg-[#806DB6]"
                                     style={{
                                         width: `${activeCard.score}%`,
                                     }}
@@ -846,6 +846,7 @@ export default function Hero() {
 
                         </div>
 
+                        {/* Mobile details */}
                         <div className="mt-3 space-y-3">
 
                             {activeCard.details.map(
@@ -881,7 +882,7 @@ export default function Hero() {
 
 
 /* =============================================================
-   SAFETY DETAIL
+   SAFETY DETAIL COMPONENT
 ============================================================= */
 
 function SafetyDetail({
@@ -901,6 +902,7 @@ function SafetyDetail({
 
                 <div className="relative z-10 flex h-[22px] w-[22px] items-center justify-center bg-white">
 
+                    {/* Shield + checkmark */}
                     <svg
                         className="h-[22px] w-[22px] text-[#806DB6]"
                         viewBox="0 0 24 24"
@@ -925,6 +927,7 @@ function SafetyDetail({
 
                 </div>
 
+                {/* Connecting line */}
                 {showLine && (
                     <span className="absolute left-1/2 top-[22px] h-[calc(100%+12px)] w-px -translate-x-1/2 bg-[#D1C9E1]" />
                 )}
