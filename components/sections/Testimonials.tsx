@@ -20,55 +20,266 @@ export default function Testimonials() {
             });
     }, []);
 
+    /*
+    ============================================================
+    LOADING STATE
+    ============================================================
+    */
     if (loading) {
         return (
-            <section id="testimonials" className="py-[120px] bg-[#EDE7FB]">
-                <div className="max-w-7xl mx-auto px-8 text-center">
-                    <h2 className="font-display font-semibold text-[42px] text-[#2B2740] mb-3">What our users say</h2>
-                    <p className="text-[#6F6A7F]">Loading testimonials...</p>
+            <section
+                id="testimonials"
+                className="bg-[#F6F4FE] py-[60px] md:py-[80px]"
+            >
+                <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
+
+                    <div
+                        className="relative w-full rounded-[10px]"
+                        style={{
+                            background:
+                                'linear-gradient(90deg, rgba(237,231,251,0.8) 0%, rgba(199,181,245,0.8) 100%)',
+                            border: '0.1px solid rgba(43, 39, 64, 0.10)',
+                            boxShadow:
+                                '0 8px 30px rgba(43, 39, 64, 0.20)',
+                        }}
+                    >
+                        <div className="px-[20px] py-[40px] text-center sm:px-[32px] md:px-[44px] md:py-[50px]">
+
+                            <h2
+                                className="text-[#2B2740]"
+                                style={{
+                                    fontFamily: 'Poppins, sans-serif',
+                                    fontSize: '30px',
+                                    fontWeight: 700,
+                                    lineHeight: '1.25',
+                                }}
+                            >
+                                What our users say
+                            </h2>
+
+                            <p
+                                className="mx-auto mt-5 max-w-[650px] text-center text-[#7E6BB3]"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: '15px',
+                                    fontWeight: 500,
+                                    lineHeight: '1.5',
+                                }}
+                            >
+                                Loading testimonials...
+                            </p>
+
+                        </div>
+                    </div>
+
                 </div>
             </section>
         );
     }
 
+    /*
+    ============================================================
+    EMPTY STATE
+    ============================================================
+    */
     if (testimonials.length === 0) {
         return (
-            <section id="testimonials" className="py-[120px] bg-[#EDE7FB]">
-                <div className="max-w-7xl mx-auto px-8 text-center">
-                    <h2 className="font-display font-semibold text-[42px] text-[#2B2740] mb-3">What our users say</h2>
-                    <p className="text-[#6F6A7F] text-base max-w-2xl mx-auto">
-                        We're collecting feedback from our first users. Check back soon to see real traveler experiences.
-                    </p>
+            <section
+                id="testimonials"
+                className="bg-[#F6F4FE] py-[60px] md:py-[80px]"
+            >
+                <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
+
+                    <div
+                        className="relative w-full rounded-[10px]"
+                        style={{
+                            background:
+                                'linear-gradient(90deg, rgba(237,231,251,0.8) 0%, rgba(199,181,245,0.8) 100%)',
+                            border: '0.1px solid rgba(43, 39, 64, 0.10)',
+                            boxShadow:
+                                '0 8px 30px rgba(43, 39, 64, 0.20)',
+                        }}
+                    >
+                        <div className="px-[20px] py-[40px] text-center sm:px-[32px] md:px-[44px] md:py-[50px]">
+
+                            <h2
+                                className="text-[#2B2740]"
+                                style={{
+                                    fontFamily: 'Poppins, sans-serif',
+                                    fontSize: '30px',
+                                    fontWeight: 700,
+                                    lineHeight: '1.25',
+                                }}
+                            >
+                                What our users say
+                            </h2>
+
+                            <p
+                                className="mx-auto mt-5 max-w-[650px] text-center text-[#7E6BB3]"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: '15px',
+                                    fontWeight: 500,
+                                    lineHeight: '1.5',
+                                }}
+                            >
+                                We're collecting feedback from our first users.
+                                Check back soon to see real traveler experiences.
+                            </p>
+
+                        </div>
+                    </div>
+
                 </div>
             </section>
         );
     }
 
+    /*
+    ============================================================
+    MAIN TESTIMONIALS SECTION
+    ============================================================
+    */
     return (
-        <section id="testimonials" className="py-[120px] bg-[#EDE7FB]">
-            <div className="max-w-7xl mx-auto px-8">
-                <h2 className="font-display font-semibold text-[42px] text-[#2B2740] text-center mb-3">
-                    What our users say
-                </h2>
-                <p className="text-[#6F6A7F] text-center text-base max-w-2xl mx-auto mb-12">
-                    Hear directly from other sources from across the globe.
-                </p>
+        <section
+            id="testimonials"
+            className="bg-[#F6F4FE] py-[60px] md:py-[80px]"
+        >
+            <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {testimonials.map((testimonial) => (
-                        <div key={testimonial.id} className="bg-white border border-[#DDD7EA] rounded-lg shadow-[0_2px_5px_rgba(47,39,64,0.08)] p-6 text-center hover:-translate-y-1 transition-all duration-300">
-                            <div className="w-16 h-16 rounded-full bg-[#EDE7FB] flex items-center justify-center mx-auto mb-3 text-[#7E6BB3] font-bold text-xl">
-                                {testimonial.name?.[0] || 'U'}
-                            </div>
-                            <div className="flex justify-center gap-0.5 mb-3">
-                                {[...Array(5)].map((_, i) => (
-                                    <FaStar key={i} className={`text-lg ${i < testimonial.rating ? 'text-[#FBBF24]' : 'text-[#DDD7EA]'}`} />
-                                ))}
-                            </div>
-                            <p className="text-[#2B2740] text-sm leading-relaxed mb-3">"{testimonial.text}"</p>
-                            <p className="text-[#6F6A7F] text-sm font-medium">— {testimonial.name}</p>
+                {/* =================================================
+                    OUTER TESTIMONIALS BLOCK
+                ================================================== */}
+                <div
+                    className="relative w-full rounded-[10px]"
+                    style={{
+                        background:
+                            'linear-gradient(90deg, rgba(237,231,251,0.8) 0%, rgba(199,181,245,0.8) 100%)',
+                        border: '0.1px solid rgba(43, 39, 64, 0.10)',
+                        boxShadow:
+                            '0 8px 30px rgba(43, 39, 64, 0.20)',
+                    }}
+                >
+
+                    {/* =================================================
+                        HEADER
+                    ================================================== */}
+                    <div className="px-[20px] pt-[40px] text-center sm:px-[32px] md:px-[44px] md:pt-[50px]">
+
+                        <h2
+                            className="text-center text-[#2B2740]"
+                            style={{
+                                fontFamily: 'Poppins, sans-serif',
+                                fontSize: '30px',
+                                fontWeight: 700,
+                                lineHeight: '1.25',
+                            }}
+                        >
+                            What our users say
+                        </h2>
+
+                        {/* No horizontal divider — intentionally removed */}
+
+                        <p
+                            className="mx-auto mt-5 max-w-[650px] text-center text-[#7E6BB3]"
+                            style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontSize: '15px',
+                                fontWeight: 500,
+                                lineHeight: '1.5',
+                            }}
+                        >
+                            Hear directly from other sources from across the globe.
+                        </p>
+
+                    </div>
+
+
+                    {/* =================================================
+                        TESTIMONIAL CARDS
+                    ================================================== */}
+                    <div className="px-[20px] pb-[40px] pt-[35px] sm:px-[32px] md:px-[44px] md:pb-[50px]">
+
+                        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+
+                            {testimonials.map((testimonial) => (
+                                <div
+                                    key={testimonial.id}
+                                    className="rounded-[10px] bg-white p-6 text-center transition-transform duration-300 hover:-translate-y-1"
+                                    style={{
+                                        border:
+                                            '0.1px solid rgba(43, 39, 64, 0.10)',
+                                        boxShadow:
+                                            '0 8px 20px rgba(43, 39, 64, 0.12)',
+                                    }}
+                                >
+
+                                    {/* =================================================
+                                        USER INITIAL
+                                    ================================================== */}
+                                    <div
+                                        className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#EDE7FB] text-xl font-bold text-[#7E6BB3]"
+                                    >
+                                        {testimonial.name?.[0] || 'U'}
+                                    </div>
+
+
+                                    {/* =================================================
+                                        RATING
+                                    ================================================== */}
+                                    <div className="mb-3 flex justify-center gap-0.5">
+                                        {[...Array(5)].map((_, i) => (
+                                            <FaStar
+                                                key={i}
+                                                className={`text-lg ${
+                                                    i < testimonial.rating
+                                                        ? 'text-[#FBBF24]'
+                                                        : 'text-[#DDD7EA]'
+                                                }`}
+                                            />
+                                        ))}
+                                    </div>
+
+
+                                    {/* =================================================
+                                        TESTIMONIAL MESSAGE
+                                    ================================================== */}
+                                    <p
+                                        className="mb-3 text-center text-[#7E6BB3]"
+                                        style={{
+                                            fontFamily:
+                                                'Inter, sans-serif',
+                                            fontSize: '15px',
+                                            fontWeight: 600,
+                                            lineHeight: '1.5',
+                                        }}
+                                    >
+                                        "{testimonial.text}"
+                                    </p>
+
+
+                                    {/* =================================================
+                                        USER NAME
+                                    ================================================== */}
+                                    <p
+                                        className="text-center text-[#6F6A7F]"
+                                        style={{
+                                            fontFamily:
+                                                'Inter, sans-serif',
+                                            fontSize: '15px',
+                                            fontWeight: 500,
+                                        }}
+                                    >
+                                        — {testimonial.name}
+                                    </p>
+
+                                </div>
+                            ))}
+
                         </div>
-                    ))}
+
+                    </div>
+
                 </div>
             </div>
         </section>

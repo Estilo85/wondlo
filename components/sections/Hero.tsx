@@ -166,7 +166,7 @@ export default function Hero() {
     ];
 
     return (
-        <section className="bg-[#F7F5FD] pt-[112px] pb-16 md:pt-[124px] md:pb-20">
+        <section className="bg-[#F7F5FD] pt-[112px] pb-8 md:pt-[124px] md:pb-10">
             <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
 
                 {/* =====================================================
@@ -268,7 +268,7 @@ export default function Hero() {
                             {/* =================================================
                                 SEARCH BAR
                             ================================================== */}
-                            <div className="flex min-h-[64px] w-full items-center rounded-[8px] border border-[#DDD8E8] bg-white p-[4px] shadow-[0_2px_8px_rgba(43,39,64,0.04)]">
+                            <div className="flex min-h-[64px] w-full items-center rounded-[8px] border border-[#DDD8E8] bg-[#F7F5FD] p-[4px] shadow-[0_2px_8px_rgba(43,39,64,0.04)]">
 
                                 {/* Search icon */}
                                 <div className="flex h-full flex-shrink-0 items-center pl-4">
@@ -371,15 +371,12 @@ export default function Hero() {
 
                                 {/* =================================================
                                     CHIPS
-
-                                    24px horizontal gap BETWEEN chips.
-                                    24px horizontal padding INSIDE each chip.
                                 ================================================== */}
                                 <div
                                     className="flex w-full flex-wrap items-center"
                                     style={{
                                         columnGap: '24px',
-                                        rowGap: '10px',
+                                        rowGap: '18px',
                                     }}
                                 >
                                     {chips.map((chip, index) => (
@@ -467,7 +464,7 @@ export default function Hero() {
                             DYNAMIC SAFETY CARD
                         ================================================== */}
                         <div
-                            className={`absolute right-[4%] top-[265px] z-30 w-[320px] rounded-[10px] border border-[#DDD6EA] bg-white p-[17px] shadow-[0_18px_45px_rgba(43,39,64,0.16)] transition-all duration-350 ${
+                            className={`absolute right-[4%] top-[265px] z-30 w-[320px] rounded-[10px] border border-[#DDD6EA] bg-[#F7F5FD] p-[17px] shadow-[0_18px_45px_rgba(43,39,64,0.16)] transition-all duration-350 ${
                                 isCardVisible
                                     ? 'translate-y-0 opacity-100'
                                     : 'translate-y-1 opacity-0'
@@ -698,7 +695,7 @@ export default function Hero() {
                         MOBILE SAFETY CARD
                     ================================================== */}
                     <div
-                        className={`absolute bottom-[-5px] right-0 z-20 w-[275px] rounded-[10px] border border-[#DDD6EA] bg-white p-3 shadow-[0_15px_35px_rgba(43,39,64,0.15)] transition-all duration-350 ${
+                        className={`absolute bottom-[-5px] right-0 z-20 w-[275px] rounded-[10px] border border-[#DDD6EA] bg-[#F7F5FD] p-3 shadow-[0_15px_35px_rgba(43,39,64,0.15)] transition-all duration-350 ${
                             isCardVisible
                                 ? 'translate-y-0 opacity-100'
                                 : 'translate-y-1 opacity-0'
@@ -900,7 +897,7 @@ function SafetyDetail({
             {/* Icon / Timeline */}
             <div className="relative flex w-[22px] flex-shrink-0 justify-center">
 
-                <div className="relative z-10 flex h-[22px] w-[22px] items-center justify-center bg-white">
+                <div className="relative z-10 flex h-[22px] w-[22px] items-center justify-center bg-[#F7F5FD]">
 
                     {/* Shield + checkmark */}
                     <svg

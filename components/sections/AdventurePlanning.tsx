@@ -33,10 +33,7 @@ export default function AdventurePlanning() {
     ];
 
     return (
-        <section className="bg-[#F6F4FE] py-[60px] md:py-[80px]">
-            {/* =====================================================
-                SAME CONTENT BOUNDS AS HERO + STATS
-            ====================================================== */}
+        <section className="bg-[#F6F4FE] pt-0 pb-[60px] md:pb-[80px]">
             <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
 
                 {/* =================================================
@@ -144,10 +141,6 @@ export default function AdventurePlanning() {
 
                                     {/* =================================================
                                         RIGHT / CORRECT QUESTION
-
-                                        Icon intentionally comes BEFORE
-                                        the question text, matching the
-                                        left-side composition.
                                     ================================================== */}
                                     <div
                                         className="relative z-10 ml-[-30px] flex min-h-[90px] w-[calc(50%+30px)] items-center gap-5 rounded-[10px] pl-[55px] pr-7"
@@ -178,8 +171,6 @@ export default function AdventurePlanning() {
 
                                     {/* =================================================
                                         VS CIRCLE
-
-                                        Sits above both question panels.
                                     ================================================== */}
                                     <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                                         <div

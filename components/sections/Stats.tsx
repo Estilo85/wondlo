@@ -23,12 +23,9 @@ export default function Stats() {
     ];
 
     return (
-        <section className="bg-[#F6F4FE] py-[40px] md:py-[48px]">
+        <section className="bg-[#F6F4FE] py-[40px] md:py-[75px]">
             {/* =====================================================
                 SAME OUTER CONTENT CONTAINER AS HERO
-
-                The Stats block now inherits the exact same horizontal
-                content boundaries as the Hero without modifying Hero.
             ====================================================== */}
             <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
 
