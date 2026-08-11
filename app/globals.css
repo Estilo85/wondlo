@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-    /* Primary Colors */
     --primary: #7E6BB3;
     --lilac-purple: #9B88C7;
     --soft-lavender: #EDE7FB;
@@ -11,22 +10,14 @@
     --white: #FFFFFF;
     --deep-plum: #2B2740;
     --text-secondary: #6F6A7F;
-    
-    /* Adventure Planning Colors */
     --peach-bg: #FFF5F0;
     --peach-text: #C77D72;
     --lavender-bg: #EEE8FA;
     --lavender-text: #6F6096;
     --vs-bg: #DCCAF8;
     --vs-text: #765FB1;
-    
-    /* Route Line */
     --route-color: #C9B65A;
-    
-    /* Footer */
     --footer-bg: #9B88C7;
-    
-    /* Borders */
     --border-light: #DDD7EA;
     --shadow-light: rgba(47, 39, 64, 0.08);
 }
@@ -51,6 +42,15 @@
 
     .card {
         @apply bg-white border border-[#DDD7EA] rounded-lg shadow-[0_2px_5px_rgba(47,39,64,0.08)];
+    }
+
+    .section-box {
+        @apply bg-[#FBFAFF] border border-[#DCD6E8] rounded-lg shadow-[0_2px_5px_rgba(47,39,64,0.08)] p-8 md:p-12;
+    }
+
+    /* Reduced section padding */
+    .section-padding {
+        @apply py-[60px] md:py-[80px];
     }
 }
 
