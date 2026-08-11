@@ -155,7 +155,7 @@ export default function Footer() {
                             <p>Safety as a System®</p>
 
                             <p className="mt-1">
-                                Copyright © 2023 Wondlo
+                                Copyright © 2026 Wondlo
                             </p>
                         </div>
 
@@ -175,19 +175,6 @@ export default function Footer() {
                             </Link>
                         </div>
                     </div>
-                </div>
-
-
-                {/* =========================================================
-                    BOTTOM-RIGHT HELP BUTTON
-                ========================================================== */}
-                <div className="absolute bottom-5 right-5 hidden sm:block md:bottom-6 md:right-6">
-                    <button
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30"
-                        aria-label="Help"
-                    >
-                        <FaQuestionCircle className="h-5 w-5" />
-                    </button>
                 </div>
             </div>
         </footer>
