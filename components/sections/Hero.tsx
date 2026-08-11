@@ -16,19 +16,11 @@ type SafetyCardData = {
 
 export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMoreOpen, setIsMoreOpen] = useState(false);
 
     /*
      * =============================================================
      * SAFETY CARD DEMO DATA
-     *
-     * Card sequence:
-     *
-     * 0: 85 / 100
-     * 1: 75 / 100
-     * 2: 25 / 100
-     * 3: 50 / 100
-     *
-     * Each card is displayed for 60 seconds.
      * =============================================================
      */
     const safetyCards: SafetyCardData[] = [
@@ -52,7 +44,6 @@ export default function Hero() {
             ],
             isExample: true,
         },
-
         {
             score: 75,
             status: 'Moderate',
@@ -73,7 +64,6 @@ export default function Hero() {
             ],
             isExample: true,
         },
-
         {
             score: 25,
             status: 'High Risk',
@@ -94,7 +84,6 @@ export default function Hero() {
             ],
             isExample: true,
         },
-
         {
             score: 50,
             status: 'Caution',
@@ -127,10 +116,8 @@ export default function Hero() {
      */
     useEffect(() => {
         const interval = setInterval(() => {
-            // Fade the current card out first.
             setIsCardVisible(false);
 
-            // Change the card after the fade-out.
             setTimeout(() => {
                 setActiveCardIndex((currentIndex) => {
                     return (currentIndex + 1) % safetyCards.length;
@@ -151,7 +138,12 @@ export default function Hero() {
         setIsModalOpen(true);
     };
 
-    const chips = [
+    /* =============================================================
+     * ADVENTURE CHIPS
+     * =============================================================*/
+
+    // Visible chips shown directly in the hero.
+    const visibleChips = [
         'Parasailing',
         'Snowboarding',
         'Trekking',
@@ -162,11 +154,48 @@ export default function Hero() {
         'Paragliding',
         'Volcano boarding',
         'Heli skiing',
-        'More',
+        'Cycling',
     ];
 
+    // Remaining adventure types displayed inside the More popup.
+    const moreChips = [
+        'Hiking',
+        'Snorkeling',
+        'Safari',
+        'Kayaking (Calm Water)',
+        'Biking (Easy Trails)',
+        'Horseback Riding (Easy)',
+        'Canoeing',
+        'Bungee jumping',
+        'Climbing',
+        'Mountaineering',
+        'Cave Diving',
+        'Skydiving',
+        'Base Jumping',
+        'White-water Rafting (Advanced)',
+        'Rock Climbing (Advanced)',
+        'Ice Climbing',
+        'Paragliding',
+        'Scuba Diving (Deep)',
+        'Extreme Skiing',
+        'Canyoning',
+        'Volcano Boarding',
+        'Shark Cage Diving',
+        'Snowboarding',
+        'Expedition',
+        'Gorilla tracking',
+        'Heli-Skiing',
+        'Free Solo Climbing',
+    ].filter(
+        (chip) =>
+            !visibleChips.some(
+                (visibleChip) =>
+                    visibleChip.toLowerCase() === chip.toLowerCase()
+            )
+    );
+
     return (
-        <section className="bg-[#F7F5FD] pt-[112px] pb-8 md:pt-[124px] md:pb-10">
+        <section className="bg-[#F6F4FE] pt-[100px] pb-0 md:pt-[120px] md:pb-10">
             <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10 xl:px-12">
 
                 {/* =====================================================
@@ -193,7 +222,6 @@ export default function Hero() {
                                 color: '#806DB6',
                             }}
                         >
-                            {/* Shield + checkmark */}
                             <svg
                                 className="h-[18px] w-[18px] flex-shrink-0"
                                 viewBox="0 0 24 24"
@@ -372,32 +400,77 @@ export default function Hero() {
                                 {/* =================================================
                                     CHIPS
                                 ================================================== */}
-                                <div
-                                    className="flex w-full flex-wrap items-center"
-                                    style={{
-                                        columnGap: '24px',
-                                        rowGap: '18px',
-                                    }}
-                                >
-                                    {chips.map((chip, index) => (
-                                        <span
-                                            key={index}
-                                            className={
-                                                chip === 'More'
-                                                    ? 'inline-flex h-[34px] items-center rounded-full px-[24px] text-[#806DB6]'
-                                                    : 'inline-flex h-[34px] items-center rounded-full border border-[#D6C9ED] bg-[#DDD2F4] px-[24px] text-[#806DB6]'
+                                <div className="relative z-[50] w-full">
+
+                                    <div
+                                        className="flex w-full flex-wrap items-center"
+                                        style={{
+                                            columnGap: '18px',
+                                            rowGap: '20px',
+                                        }}
+                                    >
+                                        {visibleChips.map((chip, index) => (
+                                            <span
+                                                key={index}
+                                                className="inline-flex h-[34px] items-center rounded-full border border-black/[0.20] bg-[#C7B5F5]/25 px-[24px] text-[#806DB6]"
+                                                style={{
+                                                    fontFamily: 'Inter, sans-serif',
+                                                    fontSize: '16px',
+                                                    fontWeight: 400,
+                                                    lineHeight: 1,
+                                                }}
+                                            >
+                                                {chip}
+                                            </span>
+                                        ))}
+
+                                        {/* =================================================
+                                            MORE
+                                        ================================================== */}
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                setIsMoreOpen((open) => !open)
                                             }
+                                            className="inline-flex h-[34px] flex-shrink-0 items-center rounded-full px-[8px] text-[#806DB6] transition-colors duration-200 hover:text-[#705DA5]"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
                                                 fontSize: '16px',
-                                                fontWeight:
-                                                    chip === 'More' ? 600 : 400,
+                                                fontWeight: 600,
                                                 lineHeight: 1,
                                             }}
                                         >
-                                            {chip}
-                                        </span>
-                                    ))}
+                                            More
+                                        </button>
+                                    </div>
+
+                                    {/* =================================================
+                                        MORE POPUP
+                                    ================================================== */}
+                                    {isMoreOpen && (
+                                        <div
+                                            className="absolute left-0 top-[calc(100%+12px)] z-[9999] w-full max-w-[700px] rounded-[10px] border border-black/[0.10] bg-[#F6F4FE] p-5 shadow-[0_15px_40px_rgba(43,39,64,0.18)]"
+                                        >
+                                            <div className="flex flex-wrap gap-x-4 gap-y-3">
+                                                {moreChips.map((chip) => (
+                                                    <span
+                                                        key={chip}
+                                                        className="inline-flex min-h-[34px] items-center rounded-full border border-black/[0.20] bg-[#C7B5F5]/25 px-[18px] text-[#806DB6]"
+                                                        style={{
+                                                            fontFamily:
+                                                                'Inter, sans-serif',
+                                                            fontSize: '15px',
+                                                            fontWeight: 400,
+                                                            lineHeight: 1.2,
+                                                        }}
+                                                    >
+                                                        {chip}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
                                 </div>
 
                             </div>
@@ -478,7 +551,6 @@ export default function Hero() {
 
                                 <div className="flex items-center gap-2">
 
-                                    {/* Shield + checkmark */}
                                     <svg
                                         className="h-[24px] w-[24px] flex-shrink-0 text-[#806DB6]"
                                         viewBox="0 0 24 24"
@@ -515,7 +587,6 @@ export default function Hero() {
 
                                 </div>
 
-                                {/* Example badge */}
                                 {activeCard.isExample && (
                                     <span
                                         className="rounded-full bg-[#F1EDF8] px-2 py-1 text-[#806DB6]"
@@ -707,7 +778,6 @@ export default function Hero() {
 
                             <div className="flex items-center gap-2">
 
-                                {/* Shield + checkmark */}
                                 <svg
                                     className="h-5 w-5 text-[#806DB6]"
                                     viewBox="0 0 24 24"

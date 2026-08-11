@@ -39,7 +39,7 @@ export default function SignInPage() {
         try {
             const response = await signIn(email, password);
             console.log('Signin response:', response);
-            
+
             if (response.success) {
                 setSuccess(true);
                 setLoading(false);
@@ -52,7 +52,10 @@ export default function SignInPage() {
             }
         } catch (err: any) {
             console.error('Signin error:', err);
-            const errorMessage = err.response?.data?.message || err.message || 'Invalid email or password. Please try again.';
+            const errorMessage =
+                err.response?.data?.message ||
+                err.message ||
+                'Invalid email or password. Please try again.';
             setError(errorMessage);
             setLoading(false);
         }
@@ -60,79 +63,120 @@ export default function SignInPage() {
 
     const handleRefer = () => {
         const link = window.location.origin + '/signup';
-        navigator.clipboard.writeText(link).then(() => {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 3000);
-        }).catch(() => {
-            const textArea = document.createElement('textarea');
-            textArea.value = link;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 3000);
-        });
+
+        navigator.clipboard
+            .writeText(link)
+            .then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 3000);
+            })
+            .catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = link;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 3000);
+            });
     };
 
     return (
-        <div className="min-h-screen bg-[#F9F7FF] flex flex-col">
+        <div className="min-h-screen bg-[#F6F4FE] flex flex-col">
             <Navbar />
-            <div className="flex-1 flex items-center justify-center px-4 pt-24 pb-12">
-                <div className="max-w-md w-full">
-                    {/* Badge - Outside box */}
-                    <div className="flex justify-center mb-6">
-                        <span className="inline-flex px-6 py-2 bg-[#7E6BB3] text-white font-medium text-sm rounded-full">
+
+            {/* =====================================================
+                SIGN IN CONTENT
+            ====================================================== */}
+            <div className="flex-1 flex items-center justify-center px-4 sm:px-6 pt-[90px] sm:pt-24 pb-10 sm:pb-12">
+
+                <div className="w-full max-w-md">
+
+                    {/* =================================================
+                        BADGE
+                    ================================================== */}
+                    <div className="flex justify-center mb-5 sm:mb-6">
+                        <span className="inline-flex px-5 sm:px-6 py-2 bg-[#7E6BB3] text-white font-medium text-sm rounded-full">
                             3 Free Safety Checks
                         </span>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-[0_2px_5px_rgba(47,39,64,0.08)] border border-[#DDD7EA] p-8">
-                        {/* No "Sign In" heading here */}
 
+                    {/* =================================================
+                        SIGN IN FORM CARD
+                    ================================================== */}
+                    <div
+                        className="rounded-lg border border-[#DDD7EA] bg-[#F6F4FE] p-5 sm:p-8 shadow-[0_2px_5px_rgba(47,39,64,0.08)]"
+                    >
+
+                        {/* Error */}
                         {error && (
                             <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg">
                                 {error}
                             </div>
                         )}
+
+                        {/* Success */}
                         {success && (
                             <div className="mb-4 p-3 bg-green-50 text-green-600 text-sm rounded-lg">
                                 ✅ Sign in successful! Redirecting...
                             </div>
                         )}
 
+
+                        {/* =================================================
+                            FORM
+                        ================================================== */}
                         <form onSubmit={handleSubmit} className="space-y-4">
+
+                            {/* Email */}
                             <div>
-                                <label className="block text-sm font-medium text-[#2B2740] mb-1">Email Address</label>
+                                <label className="block text-sm font-medium text-[#2B2740] mb-1">
+                                    Email Address
+                                </label>
+
                                 <input
                                     type="email"
                                     placeholder="you@example.com"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full h-12 px-4 bg-white border border-[#DDD7EA] rounded-lg text-[#2B2740] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#8B6BCB] focus:ring-2 focus:ring-[#8B6BCB]/20 transition-all"
+                                    className="w-full h-12 px-4 bg-[#F6F4FE] border border-[#DDD7EA] rounded-lg text-[#2B2740] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#8B6BCB] focus:ring-2 focus:ring-[#8B6BCB]/20 transition-all"
                                 />
                             </div>
 
+
+                            {/* Password */}
                             <div>
-                                <label className="block text-sm font-medium text-[#2B2740] mb-1">Password</label>
+                                <label className="block text-sm font-medium text-[#2B2740] mb-1">
+                                    Password
+                                </label>
+
                                 <div className="relative">
+
                                     <input
                                         type={showPassword ? 'text' : 'password'}
                                         placeholder="Enter your password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full h-12 px-4 bg-white border border-[#DDD7EA] rounded-lg text-[#2B2740] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#8B6BCB] focus:ring-2 focus:ring-[#8B6BCB]/20 transition-all pr-12"
+                                        className="w-full h-12 px-4 bg-[#F6F4FE] border border-[#DDD7EA] rounded-lg text-[#2B2740] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#8B6BCB] focus:ring-2 focus:ring-[#8B6BCB]/20 transition-all pr-12"
                                     />
+
                                     <button
                                         type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }
                                         className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#6B7280] hover:text-[#2B2740] transition-colors"
                                     >
                                         {showPassword ? 'Hide' : 'Show'}
                                     </button>
+
                                 </div>
                             </div>
 
+
+                            {/* Sign In */}
                             <button
                                 type="submit"
                                 disabled={loading}
@@ -140,19 +184,31 @@ export default function SignInPage() {
                             >
                                 {loading ? 'Signing in...' : 'Sign In'}
                             </button>
+
                         </form>
 
-                        {/* Divider */}
+
+                        {/* =================================================
+                            DIVIDER
+                        ================================================== */}
                         <div className="relative my-6">
+
                             <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-[#DDD7EA]"></div>
+                                <div className="w-full border-t border-[#DDD7EA]" />
                             </div>
+
                             <div className="relative flex justify-center text-sm">
-                                <span className="px-4 bg-white text-[#6B7280]">or</span>
+                                <span className="px-4 bg-[#F6F4FE] text-[#6B7280]">
+                                    or
+                                </span>
                             </div>
+
                         </div>
 
-                        {/* Refer Your Travel Buddy Button */}
+
+                        {/* =================================================
+                            REFER YOUR TRAVEL BUDDY
+                        ================================================== */}
                         <button
                             onClick={handleRefer}
                             className="w-full flex items-center justify-center gap-2 h-12 border-2 border-[#C7B5F5] text-[#2B2740] font-semibold text-sm rounded-lg hover:bg-[#EDE7FB] transition-all"
@@ -160,19 +216,31 @@ export default function SignInPage() {
                             <FaUserFriends className="text-[#8B6BCB]" />
                             Refer Your Travel Buddy
                         </button>
+
                         {copied && (
-                            <p className="text-green-600 text-sm text-center mt-3">✅ Link copied to clipboard!</p>
+                            <p className="text-green-600 text-sm text-center mt-3">
+                                ✅ Link copied to clipboard!
+                            </p>
                         )}
 
+
+                        {/* =================================================
+                            SIGN UP LINK
+                        ================================================== */}
                         <p className="text-center text-sm text-[#6B7280] mt-6">
                             Don't have an account?{' '}
-                            <Link href="/signup" className="text-[#8B6BCB] hover:underline">
+                            <Link
+                                href="/signup"
+                                className="text-[#8B6BCB] hover:underline"
+                            >
                                 Sign Up
                             </Link>
                         </p>
+
                     </div>
                 </div>
             </div>
+
             <Footer />
         </div>
     );
