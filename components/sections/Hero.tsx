@@ -18,11 +18,9 @@ export default function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMoreOpen, setIsMoreOpen] = useState(false);
 
-    /*
-     * =============================================================
+    /* =============================================================
      * SAFETY CARD DEMO DATA
-     * =============================================================
-     */
+     * ============================================================= */
     const safetyCards: SafetyCardData[] = [
         {
             score: 85,
@@ -109,11 +107,9 @@ export default function Hero() {
     const [activeCardIndex, setActiveCardIndex] = useState(0);
     const [isCardVisible, setIsCardVisible] = useState(true);
 
-    /*
-     * =============================================================
+    /* =============================================================
      * CYCLE SAFETY CARD EVERY 60 SECONDS
-     * =============================================================
-     */
+     * ============================================================= */
     useEffect(() => {
         const interval = setInterval(() => {
             setIsCardVisible(false);
@@ -142,7 +138,6 @@ export default function Hero() {
      * ADVENTURE CHIPS
      * =============================================================*/
 
-    // Visible chips shown directly in the hero.
     const visibleChips = [
         'Parasailing',
         'Snowboarding',
@@ -157,7 +152,6 @@ export default function Hero() {
         'Cycling',
     ];
 
-    // Remaining adventure types displayed inside the More popup.
     const moreChips = [
         'Hiking',
         'Snorkeling',
@@ -234,7 +228,6 @@ export default function Hero() {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                 />
-
                                 <path
                                     d="M9 12L11 14L15 10"
                                     stroke="currentColor"
@@ -244,37 +237,43 @@ export default function Hero() {
                                 />
                             </svg>
 
-                            <span>
-                                Adventure Safety Intelligence
-                            </span>
+                            <span>Adventure Safety Intelligence</span>
                         </div>
 
                         {/* =================================================
                             H1
                         ================================================== */}
                         <h1
-                            className="m-0 text-[#29243F]"
+                            className="
+                                m-0
+                                text-[#29243F]
+                                text-[45px]
+                                leading-[1.04]
+                                tracking-[-1.5px]
+                                sm:text-[54px]
+                                sm:tracking-[-2px]
+                                lg:text-[70px]
+                                lg:leading-[1.03]
+                                lg:tracking-[-2.8px]
+                            "
                             style={{
                                 fontFamily: 'Poppins, sans-serif',
-                                fontSize: '70px',
                                 fontWeight: 780,
-                                lineHeight: '1.03',
-                                letterSpacing: '-2.8px',
                             }}
                         >
                             Know if it&apos;s{' '}
                             <span className="text-[#806DB6]">safe</span>
-                            <br />
-                            before you pay
-                            <br />
-                            a deposit.
+                            <br className="hidden lg:block" />
+                            {' '}before you pay
+                            <br className="hidden lg:block" />
+                            {' '}a deposit.
                         </h1>
 
                         {/* =================================================
                             DESCRIPTION
                         ================================================== */}
                         <p
-                            className="mt-7 max-w-[590px] text-[#625C70]"
+                            className="mt-6 max-w-[590px] text-[#625C70] sm:mt-7"
                             style={{
                                 fontFamily: 'Poppins, sans-serif',
                                 fontSize: '20px',
@@ -284,67 +283,119 @@ export default function Hero() {
                             }}
                         >
                             Check an adventure provider by company name,
-                            <br />
-                            website, or social media handle.
+                            <br className="hidden sm:block" />
+                            {' '}website, or social media handle.
                         </p>
 
                         {/* =================================================
                             SEARCH + CHIPS
                         ================================================== */}
-                        <div className="mt-8 w-full lg:w-[835px] lg:max-w-none">
+                        <div className="mt-7 w-full lg:mt-8 lg:w-[835px] lg:max-w-none">
 
                             {/* =================================================
                                 SEARCH BAR
                             ================================================== */}
-                            <div className="flex min-h-[64px] w-full items-center rounded-[8px] border border-[#DDD8E8] bg-[#F7F5FD] p-[4px] shadow-[0_2px_8px_rgba(43,39,64,0.04)]">
+                            <div
+                                className="
+                                    flex
+                                    min-h-[64px]
+                                    w-full
+                                    items-center
+                                    rounded-[8px]
+                                    border
+                                    border-[#DDD8E8]
+                                    bg-[#F7F5FD]
+                                    p-[4px]
+                                    shadow-[0_2px_8px_rgba(43,39,64,0.04)]
+                                    max-[639px]:flex-col
+                                    max-[639px]:items-stretch
+                                "
+                            >
 
-                                {/* Search icon */}
-                                <div className="flex h-full flex-shrink-0 items-center pl-4">
+                                {/* Search input area */}
+                                <div
+                                    className="
+                                        flex
+                                        min-w-0
+                                        flex-1
+                                        items-center
+                                        max-[639px]:w-full
+                                    "
+                                >
+                                    {/* Search icon */}
+                                    <div className="flex h-[54px] flex-shrink-0 items-center pl-4">
+                                        <svg
+                                            className="h-[23px] w-[23px] text-[#8F8998]"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                        >
+                                            <circle
+                                                cx="10.8"
+                                                cy="10.8"
+                                                r="7"
+                                                stroke="currentColor"
+                                                strokeWidth="1.7"
+                                            />
+                                            <path
+                                                d="M16 16L21 21"
+                                                stroke="currentColor"
+                                                strokeWidth="1.7"
+                                                strokeLinecap="round"
+                                            />
+                                        </svg>
+                                    </div>
 
-                                    <svg
-                                        className="h-[23px] w-[23px] text-[#8F8998]"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                    >
-                                        <circle
-                                            cx="10.8"
-                                            cy="10.8"
-                                            r="7"
-                                            stroke="currentColor"
-                                            strokeWidth="1.7"
+                                    {/* Input */}
+                                    <div className="min-w-0 flex-1">
+                                        <input
+                                            type="text"
+                                            placeholder="Search by company name, website, or social media handle"
+                                            className="
+                                                block
+                                                h-[54px]
+                                                w-full
+                                                min-w-0
+                                                bg-transparent
+                                                px-4
+                                                text-[#29243F]
+                                                outline-none
+                                                placeholder:text-[#85808F]
+                                                max-[639px]:px-3
+                                                max-[639px]:!text-[12px]
+                                                max-[639px]:!placeholder:text-[12px]
+                                                max-[639px]:!leading-[1.3]
+                                            "
+                                            style={{
+                                                fontFamily: 'Inter, sans-serif',
+                                                fontSize: '18px',
+                                                fontWeight: 300,
+                                                lineHeight: 1,
+                                            }}
                                         />
-
-                                        <path
-                                            d="M16 16L21 21"
-                                            stroke="currentColor"
-                                            strokeWidth="1.7"
-                                            strokeLinecap="round"
-                                        />
-                                    </svg>
-
-                                </div>
-
-                                {/* Input */}
-                                <div className="min-w-0 flex-1">
-
-                                    <input
-                                        type="text"
-                                        placeholder="Search by company name, website, or social media handle"
-                                        className="block h-[54px] w-full min-w-0 bg-transparent px-4 text-[#29243F] outline-none placeholder:text-[#85808F]"
-                                        style={{
-                                            fontFamily: 'Inter, sans-serif',
-                                            fontSize: '18px',
-                                            fontWeight: 300,
-                                            lineHeight: 1,
-                                        }}
-                                    />
-
+                                    </div>
                                 </div>
 
                                 {/* Analyse button */}
                                 <button
                                     onClick={handleAnalyzeClick}
-                                    className="flex h-[54px] flex-shrink-0 items-center justify-center gap-2 rounded-[6px] bg-[#806DB6] px-6 text-white transition-all hover:-translate-y-[1px] hover:bg-[#705DA5]"
+                                    className="
+                                        flex
+                                        h-[54px]
+                                        flex-shrink-0
+                                        items-center
+                                        justify-center
+                                        gap-2
+                                        rounded-[6px]
+                                        bg-[#806DB6]
+                                        px-6
+                                        text-white
+                                        transition-all
+                                        hover:-translate-y-[1px]
+                                        hover:bg-[#705DA5]
+                                        max-[639px]:w-full
+                                        max-[639px]:text-[14px]
+                                        max-[639px]:gap-1.5
+                                    "
                                     style={{
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: '19px',
@@ -367,7 +418,6 @@ export default function Hero() {
                                             strokeWidth="1.7"
                                             strokeLinecap="round"
                                         />
-
                                         <path
                                             d="M13 6L19 12L13 18"
                                             stroke="currentColor"
@@ -377,7 +427,6 @@ export default function Hero() {
                                         />
                                     </svg>
                                 </button>
-
                             </div>
 
                             {/* =================================================
@@ -400,10 +449,16 @@ export default function Hero() {
                                 {/* =================================================
                                     CHIPS
                                 ================================================== */}
-                                <div className="relative z-[50] w-full">
+                                <div className="relative z-[99999] w-full">
 
                                     <div
-                                        className="flex w-full flex-wrap items-center"
+                                        className="
+                                            flex
+                                            w-full
+                                            flex-wrap
+                                            items-center
+                                            max-[639px]:justify-start
+                                        "
                                         style={{
                                             columnGap: '18px',
                                             rowGap: '20px',
@@ -412,7 +467,20 @@ export default function Hero() {
                                         {visibleChips.map((chip, index) => (
                                             <span
                                                 key={index}
-                                                className="inline-flex h-[34px] items-center rounded-full border border-black/[0.20] bg-[#C7B5F5]/25 px-[24px] text-[#806DB6]"
+                                                className="
+                                                    inline-flex
+                                                    h-[34px]
+                                                    flex-shrink-0
+                                                    items-center
+                                                    rounded-full
+                                                    border
+                                                    border-black/[0.20]
+                                                    bg-[#C7B5F5]/25
+                                                    px-[24px]
+                                                    text-[#806DB6]
+                                                    max-[639px]:h-[32px]
+                                                    max-[639px]:px-[18px]
+                                                "
                                                 style={{
                                                     fontFamily: 'Inter, sans-serif',
                                                     fontSize: '16px',
@@ -432,7 +500,18 @@ export default function Hero() {
                                             onClick={() =>
                                                 setIsMoreOpen((open) => !open)
                                             }
-                                            className="inline-flex h-[34px] flex-shrink-0 items-center rounded-full px-[8px] text-[#806DB6] transition-colors duration-200 hover:text-[#705DA5]"
+                                            className="
+                                                inline-flex
+                                                h-[34px]
+                                                flex-shrink-0
+                                                items-center
+                                                rounded-full
+                                                px-[8px]
+                                                text-[#806DB6]
+                                                transition-colors
+                                                duration-200
+                                                hover:text-[#705DA5]
+                                            "
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
                                                 fontSize: '16px',
@@ -449,16 +528,45 @@ export default function Hero() {
                                     ================================================== */}
                                     {isMoreOpen && (
                                         <div
-                                            className="absolute left-0 top-[calc(100%+12px)] z-[9999] w-full max-w-[700px] rounded-[10px] border border-black/[0.10] bg-[#F6F4FE] p-5 shadow-[0_15px_40px_rgba(43,39,64,0.18)]"
+                                            className="
+                                                absolute
+                                                left-0
+                                                top-[calc(100%+12px)]
+                                                z-[999999]
+                                                w-full
+                                                max-w-[700px]
+                                                rounded-[10px]
+                                                border
+                                                border-black/[0.10]
+                                                bg-[#F6F4FE]
+                                                p-5
+                                                shadow-[0_15px_40px_rgba(43,39,64,0.18)]
+                                                max-[639px]:max-w-none
+                                                max-[639px]:p-4
+                                                max-[639px]:max-h-[260px]
+                                                max-[639px]:overflow-y-auto
+                                            "
+                                            style={{
+                                                isolation: 'isolate',
+                                            }}
                                         >
                                             <div className="flex flex-wrap gap-x-4 gap-y-3">
                                                 {moreChips.map((chip) => (
                                                     <span
                                                         key={chip}
-                                                        className="inline-flex min-h-[34px] items-center rounded-full border border-black/[0.20] bg-[#C7B5F5]/25 px-[18px] text-[#806DB6]"
+                                                        className="
+                                                            inline-flex
+                                                            min-h-[34px]
+                                                            items-center
+                                                            rounded-full
+                                                            border
+                                                            border-black/[0.20]
+                                                            bg-[#C7B5F5]/25
+                                                            px-[18px]
+                                                            text-[#806DB6]
+                                                        "
                                                         style={{
-                                                            fontFamily:
-                                                                'Inter, sans-serif',
+                                                            fontFamily: 'Inter, sans-serif',
                                                             fontSize: '15px',
                                                             fontWeight: 400,
                                                             lineHeight: 1.2,
@@ -470,9 +578,7 @@ export default function Hero() {
                                             </div>
                                         </div>
                                     )}
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -486,7 +592,6 @@ export default function Hero() {
                             IMAGE STRIP
                         ================================================== */}
                         <div className="absolute right-0 top-0 w-full max-w-[735px]">
-
                             <div className="relative h-[330px] w-full overflow-hidden rounded-[7px] bg-white shadow-[0_10px_30px_rgba(43,39,64,0.08)]">
 
                                 {/* Paragliding */}
@@ -529,7 +634,6 @@ export default function Hero() {
                                 <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-black/[0.025] via-transparent to-black/[0.05]" />
 
                                 <div className="pointer-events-none absolute inset-0 z-20 rounded-[7px] ring-1 ring-inset ring-black/[0.05]" />
-
                             </div>
                         </div>
 
@@ -543,14 +647,11 @@ export default function Hero() {
                                     : 'translate-y-1 opacity-0'
                             }`}
                         >
-
                             {/* =================================================
                                 CARD HEADER
                             ================================================== */}
                             <div className="mb-3 flex items-center justify-between">
-
                                 <div className="flex items-center gap-2">
-
                                     <svg
                                         className="h-[24px] w-[24px] flex-shrink-0 text-[#806DB6]"
                                         viewBox="0 0 24 24"
@@ -563,7 +664,6 @@ export default function Hero() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                         />
-
                                         <path
                                             d="M8.8 12L11 14.2L15.5 9.8"
                                             stroke="currentColor"
@@ -584,7 +684,6 @@ export default function Hero() {
                                     >
                                         Safety Card
                                     </span>
-
                                 </div>
 
                                 {activeCard.isExample && (
@@ -600,14 +699,12 @@ export default function Hero() {
                                         EXAMPLE
                                     </span>
                                 )}
-
                             </div>
 
                             {/* =================================================
                                 SCORE PANEL
                             ================================================== */}
                             <div className="rounded-[8px] bg-[#ECE5FB] px-4 py-3">
-
                                 <p
                                     className="text-[#806DB6]"
                                     style={{
@@ -621,9 +718,7 @@ export default function Hero() {
                                 </p>
 
                                 <div className="mt-1 flex items-end justify-between">
-
                                     <div className="flex items-baseline">
-
                                         <span
                                             className="text-[#29243F]"
                                             style={{
@@ -648,7 +743,6 @@ export default function Hero() {
                                         >
                                             /100
                                         </span>
-
                                     </div>
 
                                     <span
@@ -662,14 +756,12 @@ export default function Hero() {
                                     >
                                         {activeCard.status}
                                     </span>
-
                                 </div>
 
                                 {/* =================================================
                                     PROVIDER
                                 ================================================== */}
                                 <div className="mt-3">
-
                                     <span
                                         className="inline-flex rounded-full border border-[#D9D0E8] bg-white/70 px-3 py-1.5 text-[#625C70]"
                                         style={{
@@ -681,7 +773,6 @@ export default function Hero() {
                                     >
                                         {activeCard.provider}
                                     </span>
-
                                 </div>
 
                                 {/* Score progress */}
@@ -693,30 +784,24 @@ export default function Hero() {
                                         }}
                                     />
                                 </div>
-
                             </div>
 
                             {/* =================================================
                                 SAFETY DETAILS
                             ================================================== */}
                             <div className="mt-4 space-y-4">
-
-                                {activeCard.details.map(
-                                    (detail, index) => (
-                                        <SafetyDetail
-                                            key={`${activeCardIndex}-${detail.label}`}
-                                            title={detail.label}
-                                            description={detail.value}
-                                            showLine={
-                                                index <
-                                                activeCard.details.length - 1
-                                            }
-                                        />
-                                    )
-                                )}
-
+                                {activeCard.details.map((detail, index) => (
+                                    <SafetyDetail
+                                        key={`${activeCardIndex}-${detail.label}`}
+                                        title={detail.label}
+                                        description={detail.value}
+                                        showLine={
+                                            index <
+                                            activeCard.details.length - 1
+                                        }
+                                    />
+                                ))}
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -724,49 +809,55 @@ export default function Hero() {
                 {/* =====================================================
                     MOBILE VISUAL
                 ====================================================== */}
-                <div className="relative mt-10 block h-[430px] lg:hidden">
+                <div className="relative mt-10 block lg:hidden">
 
-                    {/* Paragliding */}
-                    <div className="absolute left-0 top-0 h-[250px] w-[52%] overflow-hidden rounded-[7px]">
-                        <img
-                            src="/images/paragliding.jpg"
-                            alt="Paragliding adventure"
-                            className="h-full w-full object-cover"
-                        />
-                    </div>
+                    {/* =================================================
+                        MOBILE IMAGE GRID
+                    ================================================== */}
+                    <div className="relative h-[430px] w-full">
 
-                    {/* Hiking */}
-                    <div className="absolute right-0 top-0 h-[220px] w-[52%] overflow-hidden rounded-[7px]">
-                        <img
-                            src="/images/hiking.jpg"
-                            alt="Mountain hiking adventure"
-                            className="h-full w-full object-cover"
-                        />
-                    </div>
+                        {/* Paragliding */}
+                        <div className="absolute left-0 top-0 h-[200px] w-[48%] overflow-hidden rounded-[7px]">
+                            <img
+                                src="/images/paragliding.jpg"
+                                alt="Paragliding adventure"
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
 
-                    {/* Snowboarding */}
-                    <div className="absolute bottom-0 left-0 h-[180px] w-[34%] overflow-hidden rounded-[7px]">
-                        <img
-                            src="/images/snowboarding.jpg"
-                            alt="Snowboarding adventure"
-                            className="h-full w-full object-cover"
-                        />
-                    </div>
+                        {/* Hiking */}
+                        <div className="absolute right-0 top-0 h-[200px] w-[48%] overflow-hidden rounded-[7px]">
+                            <img
+                                src="/images/hiking.jpg"
+                                alt="Mountain hiking adventure"
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
 
-                    {/* Kayaking */}
-                    <div className="absolute bottom-0 left-[29%] h-[180px] w-[34%] overflow-hidden rounded-[7px] border-[4px] border-[#F7F5FD]">
-                        <img
-                            src="/images/kayaking.jpg"
-                            alt="Kayaking adventure"
-                            className="h-full w-full object-cover"
-                        />
+                        {/* Snowboarding */}
+                        <div className="absolute bottom-0 left-0 h-[200px] w-[48%] overflow-hidden rounded-[7px]">
+                            <img
+                                src="/images/snowboarding.jpg"
+                                alt="Snowboarding adventure"
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+
+                        {/* Kayaking */}
+                        <div className="absolute bottom-0 right-0 h-[200px] w-[48%] overflow-hidden rounded-[7px]">
+                            <img
+                                src="/images/kayaking.jpg"
+                                alt="Kayaking adventure"
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
                     </div>
 
                     {/* =================================================
                         MOBILE SAFETY CARD
                     ================================================== */}
                     <div
-                        className={`absolute bottom-[-5px] right-0 z-20 w-[275px] rounded-[10px] border border-[#DDD6EA] bg-[#F7F5FD] p-3 shadow-[0_15px_35px_rgba(43,39,64,0.15)] transition-all duration-350 ${
+                        className={`relative z-10 mt-8 w-full rounded-[10px] border border-[#DDD6EA] bg-[#F7F5FD] p-4 shadow-[0_15px_35px_rgba(43,39,64,0.15)] transition-all duration-350 ${
                             isCardVisible
                                 ? 'translate-y-0 opacity-100'
                                 : 'translate-y-1 opacity-0'
@@ -774,10 +865,8 @@ export default function Hero() {
                     >
 
                         {/* Mobile card header */}
-                        <div className="mb-2 flex items-center justify-between">
-
+                        <div className="mb-3 flex items-center justify-between">
                             <div className="flex items-center gap-2">
-
                                 <svg
                                     className="h-5 w-5 text-[#806DB6]"
                                     viewBox="0 0 24 24"
@@ -790,7 +879,6 @@ export default function Hero() {
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                     />
-
                                     <path
                                         d="M8.8 12L11 14.2L15.5 9.8"
                                         stroke="currentColor"
@@ -810,7 +898,6 @@ export default function Hero() {
                                 >
                                     Safety Card
                                 </span>
-
                             </div>
 
                             {activeCard.isExample && (
@@ -826,12 +913,10 @@ export default function Hero() {
                                     EXAMPLE
                                 </span>
                             )}
-
                         </div>
 
                         {/* Mobile score */}
                         <div className="rounded-[8px] bg-[#ECE5FB] px-3 py-2.5">
-
                             <p
                                 className="text-[#806DB6]"
                                 style={{
@@ -844,9 +929,7 @@ export default function Hero() {
                             </p>
 
                             <div className="mt-1 flex items-end justify-between">
-
                                 <div className="flex items-baseline">
-
                                     <span
                                         className="text-[#29243F]"
                                         style={{
@@ -869,7 +952,6 @@ export default function Hero() {
                                     >
                                         /100
                                     </span>
-
                                 </div>
 
                                 <span
@@ -882,12 +964,10 @@ export default function Hero() {
                                 >
                                     {activeCard.status}
                                 </span>
-
                             </div>
 
                             {/* Mobile provider */}
                             <div className="mt-2">
-
                                 <span
                                     className="inline-flex rounded-full border border-[#D9D0E8] bg-white/70 px-2.5 py-1 text-[#625C70]"
                                     style={{
@@ -898,7 +978,6 @@ export default function Hero() {
                                 >
                                     {activeCard.provider}
                                 </span>
-
                             </div>
 
                             {/* Mobile progress */}
@@ -910,28 +989,22 @@ export default function Hero() {
                                     }}
                                 />
                             </div>
-
                         </div>
 
                         {/* Mobile details */}
-                        <div className="mt-3 space-y-3">
-
-                            {activeCard.details.map(
-                                (detail, index) => (
-                                    <SafetyDetail
-                                        key={`mobile-${activeCardIndex}-${detail.label}`}
-                                        title={detail.label}
-                                        description={detail.value}
-                                        showLine={
-                                            index <
-                                            activeCard.details.length - 1
-                                        }
-                                    />
-                                )
-                            )}
-
+                        <div className="mt-4 space-y-3">
+                            {activeCard.details.map((detail, index) => (
+                                <SafetyDetail
+                                    key={`mobile-${activeCardIndex}-${detail.label}`}
+                                    title={detail.label}
+                                    description={detail.value}
+                                    showLine={
+                                        index <
+                                        activeCard.details.length - 1
+                                    }
+                                />
+                            ))}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -991,19 +1064,16 @@ function SafetyDetail({
                             strokeLinejoin="round"
                         />
                     </svg>
-
                 </div>
 
                 {/* Connecting line */}
                 {showLine && (
                     <span className="absolute left-1/2 top-[22px] h-[calc(100%+12px)] w-px -translate-x-1/2 bg-[#D1C9E1]" />
                 )}
-
             </div>
 
             {/* Text */}
             <div className="min-w-0 pt-[1px]">
-
                 <p
                     className="text-[#29243F]"
                     style={{
@@ -1027,7 +1097,6 @@ function SafetyDetail({
                 >
                     {description}
                 </p>
-
             </div>
         </div>
     );

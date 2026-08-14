@@ -36,14 +36,14 @@ export default function Navbar() {
                 backgroundColor: isScrolled ? '#FFFFFF' : '#F6F4FE',
             }}
         >
-            <div className="mx-auto flex h-full w-full max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10 xl:px-12">
+            <div className="mx-auto flex h-full w-full max-w-[1440px] items-center justify-between px-3 sm:px-8 lg:px-10 xl:px-12">
 
                 {/* =====================================================
                     LOGO
                 ====================================================== */}
                 <Link
                     href="/"
-                    className="text-[#2B2740] tracking-[-0.3px]"
+                    className="flex-shrink-0 text-[#2B2740] tracking-[-0.3px]"
                     style={{
                         fontFamily: 'Poppins, sans-serif',
                         fontSize: '22px',
@@ -51,19 +51,21 @@ export default function Navbar() {
                         lineHeight: 1,
                     }}
                 >
-                    Wondlo
+                    <span className="text-[18px] sm:text-[22px]">
+                        Wondlo
+                    </span>
                 </Link>
 
 
                 {/* =====================================================
                     RIGHT NAVIGATION
                 ====================================================== */}
-                <div className="flex items-center gap-5 sm:gap-6">
+                <div className="flex min-w-0 items-center gap-[6px] sm:gap-6">
 
                     {/* =================================================
                         HOME / COMMUNITY
                     ================================================== */}
-                    <div className="flex items-center gap-5 sm:gap-6">
+                    <div className="flex min-w-0 items-center gap-[8px] sm:gap-6">
 
                         {navLinks.map((link) => {
                             const isHome = link.href === '/';
@@ -75,10 +77,10 @@ export default function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="transition-colors duration-200"
+                                    className="whitespace-nowrap transition-colors duration-200"
                                     style={{
                                         fontFamily: 'Inter, sans-serif',
-                                        fontSize: '16px',
+                                        fontSize: '13px',
                                         fontWeight: 600,
                                         lineHeight: 1,
                                         color: isActive
@@ -86,7 +88,9 @@ export default function Navbar() {
                                             : '#2B2740',
                                     }}
                                 >
-                                    {link.name}
+                                    <span className="sm:text-[16px]">
+                                        {link.name}
+                                    </span>
                                 </Link>
                             );
                         })}
@@ -99,10 +103,10 @@ export default function Navbar() {
                     ================================================== */}
                     <Link
                         href="/signin"
-                        className="flex h-[30px] w-[84px] items-center justify-center rounded-[6px] transition-all duration-200"
+                        className="flex h-[28px] w-[62px] flex-shrink-0 items-center justify-center rounded-[6px] transition-all duration-200 sm:h-[30px] sm:w-[84px]"
                         style={{
                             fontFamily: 'Inter, sans-serif',
-                            fontSize: '16px',
+                            fontSize: '13px',
                             fontWeight: 600,
                             lineHeight: 1,
                             color: isSignInPage
@@ -114,7 +118,9 @@ export default function Navbar() {
                             border: '1px solid #7E6BB3',
                         }}
                     >
-                        Sign In
+                        <span className="sm:text-[16px]">
+                            Sign In
+                        </span>
                     </Link>
 
 
@@ -123,26 +129,30 @@ export default function Navbar() {
                     ================================================== */}
                     <Link
                         href="/signup"
-                        className="flex h-[30px] w-[84px] items-center justify-center rounded-[6px] transition-all duration-200"
+                        className="flex h-[28px] w-[62px] flex-shrink-0 items-center justify-center rounded-[6px] transition-all duration-200 sm:h-[30px] sm:w-[84px]"
                         style={{
                             fontFamily: 'Inter, sans-serif',
-                            fontSize: '16px',
+                            fontSize: '13px',
                             fontWeight: 600,
                             lineHeight: 1,
 
                             // Filled on landing page and Sign Up page
-                            color: isHomePage || isSignUpPage
-                                ? '#FFFFFF'
-                                : '#2B2740',
+                            color:
+                                isHomePage || isSignUpPage
+                                    ? '#FFFFFF'
+                                    : '#2B2740',
 
-                            backgroundColor: isHomePage || isSignUpPage
-                                ? '#7E6BB3'
-                                : 'transparent',
+                            backgroundColor:
+                                isHomePage || isSignUpPage
+                                    ? '#7E6BB3'
+                                    : 'transparent',
 
                             border: '1px solid #7E6BB3',
                         }}
                     >
-                        Sign Up
+                        <span className="sm:text-[16px]">
+                            Sign Up
+                        </span>
                     </Link>
 
                 </div>
