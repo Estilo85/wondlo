@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+export const dynamic = 'force-dynamic';
 import admin from '@/lib/firebase-admin';
 
 export async function GET(req: NextRequest) {

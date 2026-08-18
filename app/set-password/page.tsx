@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { auth } from '@/lib/firebase';
@@ -8,7 +8,8 @@ import { confirmPasswordReset, verifyPasswordResetCode } from 'firebase/auth';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-export default function SetPasswordPage() {
+// Inner component that uses useSearchParams
+function SetPasswordContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
@@ -21,7 +22,6 @@ export default function SetPasswordPage() {
   const [verifying, setVerifying] = useState(true);
   const [email, setEmail] = useState('');
 
-  // Verify the token when the page loads
   useEffect(() => {
     const verifyToken = async () => {
       if (!token) {
@@ -31,7 +31,6 @@ export default function SetPasswordPage() {
       }
 
       try {
-        // This verifies the token and returns the email
         const userEmail = await verifyPasswordResetCode(auth, token);
         setEmail(userEmail);
         console.log('✅ Token verified for:', userEmail);
@@ -49,7 +48,6 @@ export default function SetPasswordPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validation
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -64,12 +62,9 @@ export default function SetPasswordPage() {
     setError('');
 
     try {
-      // Confirm the password reset with Firebase
       await confirmPasswordReset(auth, token!, password);
       console.log('✅ Password set successfully for:', email);
       setSuccess(true);
-      
-      // Redirect to sign in after 3 seconds
       setTimeout(() => router.push('/signin'), 3000);
     } catch (err: any) {
       console.error('❌ Password set error:', err);
@@ -79,7 +74,6 @@ export default function SetPasswordPage() {
     }
   };
 
-  // Show loading while verifying
   if (verifying) {
     return (
       <main className="min-h-screen bg-[#FAF9FE]">
@@ -95,7 +89,6 @@ export default function SetPasswordPage() {
     );
   }
 
-  // Show error if token is invalid
   if (error) {
     return (
       <main className="min-h-screen bg-[#FAF9FE]">
@@ -119,7 +112,6 @@ export default function SetPasswordPage() {
     );
   }
 
-  // Main password set form
   return (
     <main className="min-h-screen bg-[#FAF9FE]">
       <Header />
@@ -127,7 +119,6 @@ export default function SetPasswordPage() {
       <div className="flex items-center justify-center min-h-[70vh] px-6 py-12">
         <div className="max-w-md w-full">
           <div className="bg-white rounded-2xl shadow-xl border border-[#EDE7FB] p-8">
-            {/* Success State */}
             {success ? (
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -144,7 +135,6 @@ export default function SetPasswordPage() {
               </div>
             ) : (
               <>
-                {/* Header */}
                 <h1 className="text-3xl font-bold text-[#282740] text-center mb-2">
                   Set your password
                 </h1>
@@ -152,7 +142,6 @@ export default function SetPasswordPage() {
                   Create a secure password for your Wondlo account.
                 </p>
                 
-                {/* Email display */}
                 {email && (
                   <div className="bg-[#EDE7FB] rounded-xl p-3 text-center mb-6">
                     <p className="text-sm text-[#7E6BB3]">
@@ -161,7 +150,6 @@ export default function SetPasswordPage() {
                   </div>
                 )}
 
-                {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {error && (
                     <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
@@ -215,5 +203,18 @@ export default function SetPasswordPage() {
 
       <Footer />
     </main>
+  );
+}
+
+// Main page component with Suspense
+export default function SetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C7B5F5]"></div>
+      </div>
+    }>
+      <SetPasswordContent />
+    </Suspense>
   );
 }
