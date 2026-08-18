@@ -18,12 +18,8 @@ export async function onRequest(context) {
       });
     }
 
-    // Here you would:
-    // 1. Check if user exists in PostgreSQL
-    // 2. Create user in Firebase Admin
-    // 3. Send email via Resend
-    // 4. Store user in PostgreSQL
-
+    // Forward to your actual backend or use Firebase Admin here
+    // For now, return a success response
     return new Response(JSON.stringify({
       success: true,
       message: 'Account created. Check your email to set your password.',
