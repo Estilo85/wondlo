@@ -1,12 +1,13 @@
 name = "wondlo"
-compatibility_date = "2024-01-01"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Point to your Next.js build output
+[assets]
+directory = ".next"
 
 [vars]
 NODE_ENV = "production"
 
 [env.production]
 vars = { NODE_ENV = "production" }
-
-[[r2_buckets]]
-binding = "MY_BUCKET"
-bucket_name = "wondlo-assets"
