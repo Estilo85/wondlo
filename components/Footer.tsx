@@ -6,7 +6,6 @@ export default function Footer() {
     <footer className="bg-[#282740] text-white">
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
-          {/* Column 1 - Wondlo */}
           <div>
             <h3 className="text-2xl font-bold mb-4 text-[#C7B5F5]">Wondlo</h3>
             <p className="text-gray-400 text-sm mb-4">
@@ -29,7 +28,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Important Link */}
           <div>
             <h4 className="font-semibold mb-4 text-white">Important Link</h4>
             <ul className="space-y-2 text-gray-400">
@@ -39,7 +37,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 - Contact */}
           <div>
             <h4 className="font-semibold mb-4 text-white">Contact</h4>
             <p className="text-gray-400">
@@ -50,15 +47,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer Bottom */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm text-center md:text-left">
             Safety as a System™ • Copyright © wondlo 2026
           </p>
           
-          {/* Telegram Icon - Bottom Right */}
           <a 
-            href={process.env.NEXT_PUBLIC_TELEGRAM_GROUP_URL || 'https://t.me/joinwandlo'}
+            href={process.env.NEXT_PUBLIC_TELEGRAM_GROUP_URL || 'https://t.me/+YOUR_GROUP_LINK'}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#C7B5F5] p-3 rounded-full hover:opacity-90 transition-colors"

@@ -11,14 +11,6 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Debug: Check if config is loaded
-console.log('🔥 Firebase Config:', {
-  apiKey: firebaseConfig.apiKey ? '✅ Loaded' : '❌ Missing',
-  authDomain: firebaseConfig.authDomain ? '✅ Loaded' : '❌ Missing',
-  projectId: firebaseConfig.projectId ? '✅ Loaded' : '❌ Missing',
-});
-
-// Initialize Firebase
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 export const auth = getAuth(app);
 export default app;
