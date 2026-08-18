@@ -6,3 +6,7 @@ NODE_ENV = "production"
 
 [env.production]
 vars = { NODE_ENV = "production" }
+
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "wondlo-assets"
