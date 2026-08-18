@@ -2,12 +2,4 @@ name = "wondlo"
 compatibility_date = "2024-10-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Point to your Next.js build output
-[assets]
-directory = ".next"
-
-[vars]
-NODE_ENV = "production"
-
-[env.production]
-vars = { NODE_ENV = "production" }
+# Pages will handle the assets automatically
