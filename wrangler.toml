@@ -1,5 +1,0 @@
-name = "wondlo"
-compatibility_date = "2024-10-01"
-compatibility_flags = ["nodejs_compat"]
-
-# Pages will handle the assets automatically
