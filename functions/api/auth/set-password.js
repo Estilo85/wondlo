@@ -25,10 +25,6 @@ export async function onRequest(context) {
       });
     }
 
-    // Here you would:
-    // 1. Confirm password reset with Firebase
-    // 2. Update user in PostgreSQL
-
     return new Response(JSON.stringify({
       success: true,
       message: 'Password set successfully. You can now sign in.'

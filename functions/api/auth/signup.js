@@ -18,8 +18,8 @@ export async function onRequest(context) {
       });
     }
 
-    // Forward to your actual backend or use Firebase Admin here
-    // For now, return a success response
+    // Your Firebase Admin logic would go here
+    // For now, return mock response
     return new Response(JSON.stringify({
       success: true,
       message: 'Account created. Check your email to set your password.',

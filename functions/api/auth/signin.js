@@ -18,19 +18,11 @@ export async function onRequest(context) {
       });
     }
 
-    // Here you would:
-    // 1. Verify Firebase ID token
-    // 2. Get user from Firebase
-    // 3. Return user data
-
+    // Your Firebase Admin logic would go here
     return new Response(JSON.stringify({
       success: true,
       message: 'Sign in successful',
-      user: {
-        id: '123',
-        name: 'User',
-        email: 'user@example.com'
-      }
+      user: { id: '123', name: 'User', email: 'user@example.com' }
     }), {
       headers: {
         'Content-Type': 'application/json',
