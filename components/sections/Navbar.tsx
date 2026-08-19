@@ -25,9 +25,12 @@ export default function Navbar() {
         { name: 'COMMUNITY', href: '/community' },
     ];
 
-    const isHomePage = pathname === '/';
-    const isSignInPage = pathname === '/signin';
-    const isSignUpPage = pathname === '/signup';
+    const currentPath = pathname?.replace(/\/$/, '') || '/';
+
+    const isHomePage = currentPath === '/';
+    const isCommunityPage = currentPath === '/community';
+    const isSignInPage = currentPath === '/signin';
+    const isSignUpPage = currentPath === '/signup';
 
     return (
         <nav
@@ -69,9 +72,10 @@ export default function Navbar() {
 
                         {navLinks.map((link) => {
                             const isHome = link.href === '/';
+
                             const isActive = isHome
                                 ? isHomePage
-                                : pathname === link.href;
+                                : isCommunityPage;
 
                             return (
                                 <Link
@@ -109,12 +113,15 @@ export default function Navbar() {
                             fontSize: '13px',
                             fontWeight: 600,
                             lineHeight: 1,
+
                             color: isSignInPage
                                 ? '#FFFFFF'
                                 : '#2B2740',
+
                             backgroundColor: isSignInPage
                                 ? '#7E6BB3'
                                 : 'transparent',
+
                             border: '1px solid #7E6BB3',
                         }}
                     >
@@ -136,16 +143,13 @@ export default function Navbar() {
                             fontWeight: 600,
                             lineHeight: 1,
 
-                            // Filled on landing page and Sign Up page
-                            color:
-                                isHomePage || isSignUpPage
-                                    ? '#FFFFFF'
-                                    : '#2B2740',
+                            color: isHomePage || isSignUpPage
+                                ? '#FFFFFF'
+                                : '#2B2740',
 
-                            backgroundColor:
-                                isHomePage || isSignUpPage
-                                    ? '#7E6BB3'
-                                    : 'transparent',
+                            backgroundColor: isHomePage || isSignUpPage
+                                ? '#7E6BB3'
+                                : 'transparent',
 
                             border: '1px solid #7E6BB3',
                         }}
