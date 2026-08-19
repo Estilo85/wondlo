@@ -6,9 +6,8 @@ import {
     FaInstagram,
     FaLinkedin,
     FaFacebook,
-    FaYoutube,
-    FaQuestionCircle,
 } from 'react-icons/fa';
+import { FaTiktok } from 'react-icons/fa6';
 
 export default function Footer() {
     return (
@@ -57,15 +56,9 @@ export default function Footer() {
                             {/* Social Icons */}
                             <div className="mt-6 flex items-center gap-4">
                                 <a
-                                    href="#"
-                                    aria-label="Instagram"
-                                    className="text-white/80 transition-colors hover:text-white"
-                                >
-                                    <FaInstagram className="h-5 w-5" />
-                                </a>
-
-                                <a
-                                    href="#"
+                                    href="https://www.linkedin.com/company/wondlo/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     aria-label="LinkedIn"
                                     className="text-white/80 transition-colors hover:text-white"
                                 >
@@ -73,7 +66,9 @@ export default function Footer() {
                                 </a>
 
                                 <a
-                                    href="#"
+                                    href="https://www.facebook.com/share/19J2nZimxj/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     aria-label="Facebook"
                                     className="text-white/80 transition-colors hover:text-white"
                                 >
@@ -81,11 +76,23 @@ export default function Footer() {
                                 </a>
 
                                 <a
-                                    href="#"
-                                    aria-label="YouTube"
+                                    href="https://www.tiktok.com/@usewondlo?_r=1&_t=ZS-98eSHPYIj6z"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="TikTok"
                                     className="text-white/80 transition-colors hover:text-white"
                                 >
-                                    <FaYoutube className="h-5 w-5" />
+                                    <FaTiktok className="h-5 w-5" />
+                                </a>
+
+                                <a
+                                    href="https://www.instagram.com/joinwondlo?igsh=MXEyaTZzMnUybnV2cQ=="
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram"
+                                    className="text-white/80 transition-colors hover:text-white"
+                                >
+                                    <FaInstagram className="h-5 w-5" />
                                 </a>
                             </div>
                         </div>

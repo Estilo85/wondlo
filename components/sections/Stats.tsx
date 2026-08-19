@@ -48,7 +48,7 @@ export default function Stats() {
                                 className="relative flex h-full items-center justify-center"
                             >
                                 {/* =================================================
-                                    120PX VERTICAL SEPARATOR
+                                    VERTICAL SEPARATOR
                                 ================================================== */}
                                 {index < stats.length - 1 && (
                                     <div
@@ -60,7 +60,10 @@ export default function Stats() {
                                     />
                                 )}
 
-                                <div className="flex items-center gap-5">
+                                {/* =================================================
+                                    CONSISTENT STAT CONTENT
+                                ================================================== */}
+                                <div className="flex w-[230px] items-center gap-5">
 
                                     {/* =================================================
                                         ICON CIRCLE
@@ -78,11 +81,11 @@ export default function Stats() {
                                     {/* =================================================
                                         TEXT
                                     ================================================== */}
-                                    <div className="text-left">
+                                    <div className="min-w-0 flex-1 text-left">
 
                                         {/* Number */}
                                         <h3
-                                            className="text-[#2B2740]"
+                                            className="whitespace-nowrap text-[#2B2740]"
                                             style={{
                                                 fontFamily:
                                                     'Poppins, sans-serif',
@@ -109,11 +112,9 @@ export default function Stats() {
                                         </p>
 
                                     </div>
-
                                 </div>
                             </div>
                         ))}
-
                     </div>
                 </div>
 
